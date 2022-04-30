@@ -8,7 +8,7 @@
 puts "seeding data..."
 
 50.times do 
-    User.create(username: Faker::Internet.unique.username, email: Faker::Internet.unique.email, password: Faker::Internet.password, name: Faker::Name.name, birthdate: Faker::Date.birthday(min_age: 16, max_age: 95).to_s) 
+    User.create(username: Faker::Internet.unique.username, email: Faker::Internet.unique.email, password: Faker::Internet.password, name: Faker::Name.name, birthdate: Faker::Date.birthday(min_age: 16, max_age: 95)) 
 end
 
 50.times do 

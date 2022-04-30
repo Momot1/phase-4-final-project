@@ -1,14 +1,16 @@
 Rails.application.routes.draw do
-  resources :reviews
-  resources :products
 
-  # Login/logout routes
-  post "/login", to: "sessions#create"
-  delete "/logout", to: "sessions#destroy"
+    resources :reviews
+    resources :products
 
-  # Signup and crab user info routes
-  post "/signup" to: "users#create"
-  get "/me" to: "users#show"
+    # Login/logout routes
+    post "/login", to: "sessions#create"
+    delete "/logout", to: "sessions#destroy"
+
+    # Signup and crab user info routes
+    post "/signup", to: "users#create"
+    get "/me", to: "users#show"
+
   
 
   # Routing logic: fallback requests for React Router.

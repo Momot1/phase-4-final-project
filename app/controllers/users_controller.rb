@@ -21,7 +21,7 @@ class UsersController < ApplicationController
     private
 
     def user_params
-        params.permit(:username, :email, :birthdate, :name, :password)
+        params.permit(:username, :email, :birthdate, :name, :password, :password_confirmation)
     end
 
     def rescue_not_found
