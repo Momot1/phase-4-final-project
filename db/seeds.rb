@@ -5,3 +5,20 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+puts "seeding data..."
+
+50.times do 
+    User.create(username: Faker::Internet.unique.username, email: Faker::Internet.unique.email, password: Faker::Internet.password, name: Faker::Name.name, birthdate: Faker::Date.birthday(min_age: 16, max_age: 95).to_s) 
+end
+
+50.times do 
+    Product.create(name: Faker::Commerce.product_name, price: Faker::Commerce.price, purchase_link: Faker::Internet.url) 
+end
+
+100.times do 
+    Userproduct.create(user_id: rand(1..50), product_id: rand(1..50)) 
+end
+
+
+puts "done seeding"
+
