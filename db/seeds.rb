@@ -12,7 +12,7 @@ puts "seeding data..."
 end
 
 50.times do 
-    Product.create(name: Faker::Commerce.product_name, price: Faker::Commerce.price, purchase_link: Faker::Internet.url) 
+    Product.create(name: Faker::Commerce.unique.product_name, price: Faker::Commerce.price, purchase_link: Faker::Internet.url) 
 end
 
 100.times do 

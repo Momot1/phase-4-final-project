@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
     rescue_from ActiveRecord::RecordNotFound, with: :rescue_not_found
-    skip_before_action :authorized
+    skip_before_action :authorized, only: [:index, :show]
 
     def index
         render json: Product.all

@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { Link } from "react-router-dom"
 
 function Signup(){
     const [formData, setFormData] = useState({
@@ -41,7 +42,8 @@ function Signup(){
                 <input type="password" placeholder="Password" value={formData.password} onChange={e => updateForm(e, "password")}/><br/>
                 <label>Repeat password: </label>
                 <input type="password" placeholder="Password Confirmation" value={formData.password_confirmation} onChange={e => updateForm(e, "password_confirmation")}/><br/>
-                <button type="submit">Sign Up</button>
+                <button type="submit">Sign Up</button><br/>
+                <Link to="/login">Already have an account? Login</Link>
             </form>
         </div>
     )

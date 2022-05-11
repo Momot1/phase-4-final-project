@@ -9,15 +9,34 @@ import Product from "./Product";
 import UserProfile from "./UserProfile";
 
 function App() {
+  const [user, setUser] = useState(null)
 
+  console.log(user)
+
+  useEffect(() => {
+    fetch('/me')
+    .then(resp => {
+      if(resp.ok){
+        resp.json().then(setUser)
+      }
+    })
+  }, [])
+
+  function handleLogout(){
+    fetch('/logout', {
+      method: "DELETE"
+    })
+    .then(resp => resp.json())
+    .then(setUser)
+  }
 
   return (
     <BrowserRouter>
-      <Navbar />
+      <Navbar user={user} handleLogout={handleLogout} />
 
       <Switch>
         <Route exact path = "/"><Home/></Route>
-        <Route path="/login"><Login/></Route>
+        <Route path="/login"><Login user={user} setUser={setUser}/></Route>
         <Route path="/signup"><Signup/></Route>
         <Route path="/cart"><Cart /></Route>
         <Route path="/products/:id"><Product /></Route>

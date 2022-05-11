@@ -1,6 +1,7 @@
 import { useState } from "react"
+import { Link } from "react-router-dom"
 
-function Login(){
+function Login({user, setUser}){
 
     const [formData, setFormData] = useState({
         username: "",
@@ -16,7 +17,7 @@ function Login(){
             body: JSON.stringify(formData)
         })
         .then(resp => resp.json())
-        .then(user => console.log(user))
+        .then(setUser)
 
     }
 
@@ -31,7 +32,8 @@ function Login(){
                 <input type="text" placeholder="Username" value={formData.username} onChange={e => updateForm(e, "username")}/><br/>
                 <label>Password</label>
                 <input type="password" placeholder="Password" value={formData.password} onChange={e => updateForm(e, "password")}/><br/>
-                <button type="submit">Login</button>
+                <button type="submit">Login</button><br/>
+                <Link to="/signup">Don't have an account? Sign up</Link>
             </form>
         </div>
     )
