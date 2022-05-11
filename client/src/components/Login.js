@@ -8,6 +8,8 @@ function Login({user, setUser}){
         password: ""
     })
 
+    const [errors, setErrors] = useState(null)
+
     function onLogin(e){
         e.preventDefault()
 
@@ -16,9 +18,17 @@ function Login({user, setUser}){
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify(formData)
         })
-        .then(resp => resp.json())
-        .then(setUser)
-
+        .then(resp => {
+            if(resp.ok){
+                resp.json().then(user => {
+                    setErrors(null)
+                    setUser(user)
+                    window.history.back()
+                })
+            } else{
+                resp.json().then(setErrors)
+            }
+        })
     }
 
     function updateForm(e, input){
@@ -33,6 +43,7 @@ function Login({user, setUser}){
                 <label>Password</label>
                 <input type="password" placeholder="Password" value={formData.password} onChange={e => updateForm(e, "password")}/><br/>
                 <button type="submit">Login</button><br/>
+                {errors ? <>{errors.error}<br/></> : null}
                 <Link to="/signup">Don't have an account? Sign up</Link>
             </form>
         </div>
