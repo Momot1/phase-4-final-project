@@ -7,11 +7,14 @@ import Navbar from "./Navbar";
 import Cart from "./Cart";
 import Product from "./Product";
 import UserProfile from "./UserProfile";
+import Logout from "./Logout";
 
 function App() {
-  const [user, setUser] = useState(null)
 
-  console.log(user)
+  const [user, setUser] = useState(null)
+  const [products, setProducts] = useState([])
+
+  // console.log(user)
 
   useEffect(() => {
     fetch('/me')
@@ -22,25 +25,32 @@ function App() {
     })
   }, [])
 
-  function handleLogout(){
-    fetch('/logout', {
-      method: "DELETE"
-    })
+  useEffect(() => {
+    fetch("/products")
     .then(resp => resp.json())
-    .then(setUser)
-  }
+    .then(setProducts)
+  }, [])
+
+  // function handleLogout(){
+  //   fetch('/logout', {
+  //     method: "DELETE"
+  //   })
+  //   .then(resp => resp.json())
+  //   .then(setUser)
+  // }
 
   return (
     <BrowserRouter>
-      <Navbar user={user} handleLogout={handleLogout} />
+      <Navbar user={user} />
 
       <Switch>
-        <Route exact path = "/"><Home/></Route>
-        <Route path="/login"><Login user={user} setUser={setUser}/></Route>
-        <Route path="/signup"><Signup/></Route>
+        <Route exact path = "/"><Home products={products} setProducts={setProducts}/></Route>
+        <Route path="/login"><Login setUser={setUser}/></Route>
+        <Route path="/signup"><Signup setUser={setUser}/></Route>
         <Route path="/cart"><Cart /></Route>
         <Route path="/products/:id"><Product /></Route>
-        <Route path="/users/:username/about"><UserProfile /></Route>
+        <Route path="/:username/about"><UserProfile /></Route>
+        <Route path="/logout"><Logout setUser={setUser}/></Route>
         <Route path="/">404 NOT FOUND</Route>
       </Switch>
     </BrowserRouter>

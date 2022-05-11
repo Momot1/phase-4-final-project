@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { Link } from "react-router-dom"
 
-function Login({user, setUser}){
+function Login({setUser}){
 
     const [formData, setFormData] = useState({
         username: "",
@@ -26,7 +26,10 @@ function Login({user, setUser}){
                     window.history.back()
                 })
             } else{
-                resp.json().then(setErrors)
+                resp.json().then(errors => {
+                    setErrors(errors)
+                    setFormData({username: formData.username, password: ""})
+                })
             }
         })
     }
@@ -39,9 +42,9 @@ function Login({user, setUser}){
         <div>
             <form onSubmit={onLogin}>
                 <label>Username:</label>
-                <input type="text" placeholder="Username" value={formData.username} onChange={e => updateForm(e, "username")}/><br/>
+                <input type="text" placeholder="Username" value={formData.username} onChange={e => updateForm(e, "username")} required/><br/>
                 <label>Password</label>
-                <input type="password" placeholder="Password" value={formData.password} onChange={e => updateForm(e, "password")}/><br/>
+                <input type="password" placeholder="Password" value={formData.password} onChange={e => updateForm(e, "password")} required/><br/>
                 <button type="submit">Login</button><br/>
                 {errors ? <>{errors.error}<br/></> : null}
                 <Link to="/signup">Don't have an account? Sign up</Link>
