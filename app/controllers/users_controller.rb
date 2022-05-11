@@ -3,7 +3,7 @@ class UsersController < ApplicationController
     skip_before_action :authorized, only: :create
 
     def create
-        user = User.create(user_params)
+        user = User.create(user_create_params)
         if user.valid?
             session[:user_id] = user.id
             render json: user, status: :created
@@ -18,10 +18,24 @@ class UsersController < ApplicationController
         render json: user, status: :created
     end
 
+    def update_password
+        user = User.find(session[:user_id])
+
+        if(user&.authenticate(params[:old_password]))
+            user.update(user_update_params)
+        end
+
+        render json: user
+    end
+
     private
 
-    def user_params
+    def user_create_params
         params.permit(:username, :email, :birthdate, :name, :password, :password_confirmation)
+    end
+
+    def user_update_params
+        params.permit(:password, :password_confirmation)
     end
 
     def rescue_not_found

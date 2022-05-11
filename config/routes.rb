@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     post "/signup", to: "users#create"
     get "/me", to: "users#show"
 
-  
+    patch "/changepassword", to: "users#update_password"
 
   # Routing logic: fallback requests for React Router.
   # Leave this here to help deploy your app later!
