@@ -31,13 +31,7 @@ function App() {
     .then(setProducts)
   }, [])
 
-  // function handleLogout(){
-  //   fetch('/logout', {
-  //     method: "DELETE"
-  //   })
-  //   .then(resp => resp.json())
-  //   .then(setUser)
-  // }
+  console.log(products)
 
   return (
     <BrowserRouter>
@@ -48,7 +42,7 @@ function App() {
         <Route path="/login"><Login setUser={setUser}/></Route>
         <Route path="/signup"><Signup setUser={setUser}/></Route>
         <Route path="/cart"><Cart /></Route>
-        <Route path="/products/:id"><Product /></Route>
+        <Route path="/products/:id"><Product products={products}/></Route>
         <Route path="/:username/about"><UserProfile /></Route>
         <Route path="/logout"><Logout setUser={setUser}/></Route>
         <Route path="/">404 NOT FOUND</Route>

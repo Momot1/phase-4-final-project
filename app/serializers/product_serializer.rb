@@ -1,5 +1,5 @@
 class ProductSerializer < ActiveModel::Serializer
-  attributes :id, :name, :price, :purchase_link, :image_url, :sales
+  attributes :id, :name, :price, :purchase_link, :image_url, :sales, :description, :stock_amount
 
   def sales
     object.users.count
