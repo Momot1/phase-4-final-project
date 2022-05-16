@@ -1,4 +1,6 @@
-function Cart(){
+function Cart({user}){
+    console.log(user)
+
     return (
         <></>
     )

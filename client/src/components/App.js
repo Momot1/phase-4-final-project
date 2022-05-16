@@ -31,7 +31,7 @@ function App() {
     .then(setProducts)
   }, [])
 
-  console.log(products)
+  console.log(user)
 
   return (
     <BrowserRouter>
@@ -41,8 +41,8 @@ function App() {
         <Route exact path = "/"><Home products={products} setProducts={setProducts}/></Route>
         <Route path="/login"><Login setUser={setUser}/></Route>
         <Route path="/signup"><Signup setUser={setUser}/></Route>
-        <Route path="/cart"><Cart /></Route>
-        <Route path="/products/:id"><Product /></Route>
+        <Route path="/cart"><Cart user={user}/></Route>
+        <Route path="/products/:id"><Product user={user}/></Route>
         <Route path="/:username/about"><UserProfile /></Route>
         <Route path="/logout"><Logout setUser={setUser}/></Route>
         <Route path="/">404 NOT FOUND</Route>

@@ -2,8 +2,8 @@ class ReviewsController < ApplicationController
     rescue_from ActiveRecord::RecordNotFound, with: :rescue_not_found
 
     def create
-        product = Product.find(params[:product_id])
-        review = product.reviews.create(reviews_params)
+        # review = Review.create(user_id: session[:user_id], product_id: params[:product_id], description: params[:description], rating: params[:rating])
+        review = User.find(session[:user_id]).reviews.create(reviews_params)
         render json: review, status: :created
     end
 
@@ -29,6 +29,6 @@ class ReviewsController < ApplicationController
     end
 
     def reviews_params
-        params.permit(:product_id, :description, :rating, :user_id)
+        params.permit(:product_id, :description, :rating)
     end
 end

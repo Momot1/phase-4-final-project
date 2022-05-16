@@ -28,6 +28,14 @@ class UsersController < ApplicationController
         render json: user
     end
 
+    def add_to_cart
+        user = User.find(session[:user_id])
+        product = Product.find(params[:product_id])
+        user.cart.push(product)
+        user.save
+        render json: user
+    end
+
     private
 
     def user_create_params

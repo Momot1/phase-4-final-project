@@ -16,7 +16,7 @@ end
 end
 
 100.times do 
-    Userproduct.create(user_id: rand(1..50), product_id: rand(1..50)) 
+    Userproduct.create(user_id: rand(1..51), product_id: rand(1..50)) 
 end
 
 
