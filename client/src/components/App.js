@@ -14,7 +14,7 @@ function App() {
   const [user, setUser] = useState(null)
   const [products, setProducts] = useState([])
 
-  // console.log(user)
+  console.log(user)
 
   useEffect(() => {
     fetch('/me')
@@ -41,7 +41,7 @@ function App() {
         <Route exact path = "/"><Home products={products} setProducts={setProducts}/></Route>
         <Route path="/login"><Login setUser={setUser}/></Route>
         <Route path="/signup"><Signup setUser={setUser}/></Route>
-        <Route path="/cart"><Cart user={user}/></Route>
+        <Route path="/cart"><Cart user={user} products={products}/></Route>
         <Route path="/products/:id"><Product user={user}/></Route>
         <Route path="/:username/about"><UserProfile /></Route>
         <Route path="/logout"><Logout setUser={setUser}/></Route>

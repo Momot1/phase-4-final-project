@@ -10,10 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_16_152217) do
+ActiveRecord::Schema.define(version: 2022_05_16_173215) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "cartproducts", force: :cascade do |t|
+    t.integer "product_id"
+    t.integer "cart_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "carts", force: :cascade do |t|
+    t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "products", force: :cascade do |t|
     t.string "name"
@@ -35,11 +48,19 @@ ActiveRecord::Schema.define(version: 2022_05_16_152217) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "user_carts", force: :cascade do |t|
+    t.integer "product_id"
+    t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "userproducts", force: :cascade do |t|
     t.integer "user_id"
     t.integer "product_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "is_in_cart", default: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -50,7 +71,6 @@ ActiveRecord::Schema.define(version: 2022_05_16_152217) do
     t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "cart", default: [], array: true
   end
 
 end
