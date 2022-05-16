@@ -6,4 +6,10 @@ class User < ApplicationRecord
     has_many :userproducts
     has_many :products, through: :userproducts
     has_one :cart
+
+    def self.create props
+        super(props)
+
+        User.find_by(username: props[:username]).create_cart
+    end
 end
