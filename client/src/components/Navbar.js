@@ -5,7 +5,7 @@ import { useState } from "react"
 function Navbar({onSearch, user}){
     const [search, setSearch] = useState("")
 
-
+    // console.log(user.cart.cart.length)
 
     return (
         <div>
@@ -17,7 +17,7 @@ function Navbar({onSearch, user}){
                     <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{user.name}</button>
                     <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <Link to={`/${user.username}/about`}>Profile</Link><br/>
-                        <Link to="/cart">My Cart</Link><br/>
+                        <Link to="/cart">My Cart {user.cart.cart.length > 0 ? `(${user.cart.cart.length})`: null}</Link><br/>
                         <Link to="/logout">Logout</Link>
                         
                     </div>
