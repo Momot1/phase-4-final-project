@@ -10,10 +10,10 @@ function Cart({user}){
     function removeFromCart(id){
         // const product = user.cart.products.filter(product => product.id === id)
 
-        // console.log(user.cart)
+        console.log(id)
 
 
-        fetch(`/cartproducts/1`, {
+        fetch(`/removefromcart/${id}`, {
             method: "DELETE", 
         }) //remove correct item from cart
         .then(resp => resp.json())
@@ -26,12 +26,12 @@ function Cart({user}){
 
     console.log(user.cart)
 
-    const productElements = user.cart.map(product => <div key={product.id}><Link to={`/products/${product.product.id}`}>{product.product.name} - ${addZeros(product.product.price)}</Link> <p>{product.product.description}<button onClick={() => removeFromCart(product.id)}>Remove From Cart</button></p></div>)
+    const productElements = user.cart.cart.map(product => <div key={product.id}><Link to={`/products/${product.product.id}`}>{product.product.name} - ${addZeros(product.product.price)}</Link> <p>{product.product.description}<button onClick={() => removeFromCart(product.id)}>Remove From Cart</button></p></div>)
 
     return (
         <div>
             {productElements}
-            {/* <h5>Cart total: ${addZeros(user.cart.total)}</h5> */}
+            <h5>Cart total: ${addZeros(user.cart.total)}</h5>
         </div>
     )
 }

@@ -16,12 +16,6 @@ function App() {
 
   console.log(user)
 
-  useEffect(() => {
-      fetch("/products")
-      .then(resp => resp.json())
-      .then(setProducts)
-    }, [])
-
 
   useEffect(() => {
     fetch('/me')
@@ -31,6 +25,12 @@ function App() {
       }
     })
   }, [])
+
+  useEffect(() => {
+      fetch("/products")
+      .then(resp => resp.json())
+      .then(setProducts)
+    }, [])
 
   
 

@@ -33,7 +33,7 @@ function Product({user}){
     }
 
     function addToCart(){
-        fetch("/cartproducts", {
+        fetch("/addtocart", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
