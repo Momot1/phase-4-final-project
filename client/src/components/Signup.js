@@ -23,6 +23,7 @@ function Signup({setUser}){
         .then(resp => {
             if(resp.ok){
                 resp.json().then(user => {
+                    console.log(user)
                     setUser(user)
                     window.history.go(-2)
                 })

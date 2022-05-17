@@ -8,6 +8,7 @@ import Cart from "./Cart";
 import Product from "./Product";
 import UserProfile from "./UserProfile";
 import Logout from "./Logout";
+import ChangePassword from "./ChangePassword";
 
 function App() {
 
@@ -24,6 +25,7 @@ function App() {
       }
     })
   }, [])
+  console.log(user)
 
   useEffect(() => {
       fetch("/products")
@@ -47,8 +49,9 @@ function App() {
         <Route path="/signup"><Signup setUser={setUser}/></Route>
         <Route path="/cart"><Cart user={user} setUser={setUser}/></Route>
         <Route path="/products/:id"><Product user={user} setUser={setUser}/></Route>
-        <Route path="/:username/about"><UserProfile /></Route>
+        <Route exact path="/:username/about"><UserProfile user={user} setUser={setUser}/></Route>
         <Route path="/logout"><Logout setUser={setUser}/></Route>
+        <Route path="/:username/about/password/change"><ChangePassword user={user} setUser={setUser}/></Route>
         <Route path="/">404 NOT FOUND</Route>
       </Switch>
     </BrowserRouter>

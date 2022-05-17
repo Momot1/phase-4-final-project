@@ -1,5 +1,5 @@
 class Product < ApplicationRecord
-    has_many :reviews
-    has_many :userproducts
+    has_many :reviews, dependent: :destroy
+    has_many :userproducts, dependent: :destroy
     has_many :users, through: :userproducts
 end

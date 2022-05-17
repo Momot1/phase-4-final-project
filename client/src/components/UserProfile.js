@@ -1,56 +1,31 @@
-import { useState } from "react"
+import { Link } from "react-router-dom"
 
 function UserProfile({user, setUser}){
-
-    const [formData, setFormData] = useState({
-        old_password: "",
-        password: "",
-        password_confirmation: ""
-    })
-
-    function updateForm(e, input){
-        setFormData({...formData, [input]: e.target.value})
+    if(!user){
+        return <></>
     }
 
-    function handleUserUpdateChange(e){
-        e.preventDefault()
-
-        fetch("/changepassword", {
-            method: "PATCH",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(formData)
-        })
-        .then(resp => resp.json())
-        .then(console.log)
+    function handleDeleteAccount(){
+        if(window.confirm("Are you sure you want to delete your account?")){
+            fetch(`/users/${user.id}`, {
+                method: "DELETE"
+            })
+            .then(resp => resp.json())
+            .then(() => setUser(null))
+        } else{
+            console.log("not confirmed")
+        }
+        
     }
 
     return (
         <div>
-            <div>
-                <form onSubmit={handleUserUpdateChange} className="align-items-center">
-                    <div className="input-group mb-3">
-                        <div className="input-group-prepend">
-                            <span className="input-group-text" aria-label="Old Password">Old Password:</span>
-                        </div>
-                        <input type="password" className="form-control" aria-label="Old Password" aria-describedby="inputGroup-sizing-default" value={formData.old_password} onChange={e => updateForm(e, "old_password")}/><br/>
-                    </div>
-                    <div className="input-group mb-3">
-                        <div>
-                            <span className="input-group-text" aria-label="New Password">New Password:</span>  
-                        </div>
-                        <input type="password" className="form-control" aria-label="New Password" aria-describedby="inputGroup-sizing-default" value={formData.password} onChange={e => updateForm(e, "password")}/><br/>
-                    </div>
-                    <div className="input-group mb-3">
-                        <div>
-                            <span className="input-group-text" aria-label="Confirm New Password">Confirm New Password:</span>
-                        </div>
-                        <input type="password" className="form-control" aria-label="Confirm New Password" aria-describedby="inputGroup-sizing-default" value={formData.password_confirmation} onChange={e => updateForm(e, "password_confirmation")}/><br/> 
-                    </div>
-                    <button type="submit">Update</button>
-                </form>
-            </div>
+            <h3>Profile for {user.name}</h3>
+            <h4>Username: {user.username}</h4>
+            <h4>Email: {user.email}</h4>
+            <h4>Birthday: {user.birthdate}</h4>
+            <Link to={`/${user.username}/about/password/change`}>Change password</Link><br/><br/>
+            <button onClick={handleDeleteAccount}>Delete Account</button>
         </div>
     )
 }

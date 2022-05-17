@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     resources :reviews, only: [:create, :update, :destroy]
     resources :products
     resources :cartproducts, only: [:create, :destroy]
+    resources :users, only: [:destroy]
 
     # Login/logout routes
     post "/login", to: "sessions#create"
