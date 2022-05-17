@@ -23,9 +23,17 @@ class UsersController < ApplicationController
 
         if(user&.authenticate(params[:old_password]))
             user.update(user_update_params)
-        end
+            if user.valid?
+                render json: user
+            end
+        else
+            user.errors.add(:base, "Previous password is incorrect")
+            if params[:password] != params[:password_confirmation]
+                user.errors.add(:base, "Password confirmation doesn't match Password")
+            end
+        end 
 
-        render json: user
+        render json: {errors: user.errors.full_messages}, status: :unprocessable_entity
     end
 
     def destroy

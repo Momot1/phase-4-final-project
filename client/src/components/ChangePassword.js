@@ -7,6 +7,8 @@ function ChangePassword({user, setUser}){
         password_confirmation: ""
     })
 
+    const [errors, setErros] = useState({errors: []})
+
     function updateForm(e, input){
         setFormData({...formData, [input]: e.target.value})
     }
@@ -21,13 +23,20 @@ function ChangePassword({user, setUser}){
             },
             body: JSON.stringify(formData)
         })
-        .then(resp => resp.json())
-        .then(console.log)
+        .then(resp => {
+            if(resp.ok){
+                resp.json().then(setUser)
+            } else{
+                resp.json().then(setErros)
+            }
+        })
     }
 
     if(!user){
         return <></>
     }
+
+    const errorElements = errors.errors.map(error => <div key={error} className="alert alert-danger">- {error}</div>)
 
     return (
         <div>
@@ -50,6 +59,7 @@ function ChangePassword({user, setUser}){
                     </div>
                     <input type="password" className="form-control" aria-label="Confirm New Password" aria-describedby="inputGroup-sizing-default" value={formData.password_confirmation} onChange={e => updateForm(e, "password_confirmation")}/><br/> 
                 </div>
+                {errors.errors.length>0 ? errorElements : null}
                 <button type="submit">Update</button>
             </form>
         </div>
