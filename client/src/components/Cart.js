@@ -7,22 +7,31 @@ function Cart({user}){
     // console.log(user.cart.products)
 
 
-    function removeFromCart(){
-        fetch() //remove correct item from cart
+    function removeFromCart(id){
+        // const product = user.cart.products.filter(product => product.id === id)
+
+        // console.log(user.cart)
+
+
+        fetch(`/cartproducts/1`, {
+            method: "DELETE", 
+        }) //remove correct item from cart
         .then(resp => resp.json())
-        .then()//filter user
+        .then(console.log)//filter user
     }
 
     if(!user){
         return <></>
     }
 
-    const productElements = user.cart.products.map(product => <div key={product.id}><Link to={`/products/${product.id}`}>{product.name} - ${addZeros(product.price)}</Link> <p>{product.description}</p></div>)
+    console.log(user.cart)
+
+    const productElements = user.cart.map(product => <div key={product.id}><Link to={`/products/${product.product.id}`}>{product.product.name} - ${addZeros(product.product.price)}</Link> <p>{product.product.description}<button onClick={() => removeFromCart(product.id)}>Remove From Cart</button></p></div>)
 
     return (
         <div>
             {productElements}
-            <h5>Cart total: ${addZeros(user.cart.total)}</h5>
+            {/* <h5>Cart total: ${addZeros(user.cart.total)}</h5> */}
         </div>
     )
 }

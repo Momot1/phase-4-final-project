@@ -17,6 +17,13 @@ function App() {
   console.log(user)
 
   useEffect(() => {
+      fetch("/products")
+      .then(resp => resp.json())
+      .then(setProducts)
+    }, [])
+
+
+  useEffect(() => {
     fetch('/me')
     .then(resp => {
       if(resp.ok){
@@ -25,11 +32,7 @@ function App() {
     })
   }, [])
 
-  useEffect(() => {
-    fetch("/products")
-    .then(resp => resp.json())
-    .then(setProducts)
-  }, [])
+  
 
   console.log(user)
 

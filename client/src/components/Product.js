@@ -33,7 +33,7 @@ function Product({user}){
     }
 
     function addToCart(){
-        fetch("/addtocart", {
+        fetch("/cartproducts", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -43,7 +43,7 @@ function Product({user}){
             })
         })
         .then(resp => resp.json())
-        .then(console.log)
+        .then(console.log) //Update user cart on frontend if comes back with no error
     }
 
     

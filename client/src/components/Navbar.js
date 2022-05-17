@@ -5,6 +5,8 @@ import { useState } from "react"
 function Navbar({onSearch, user}){
     const [search, setSearch] = useState("")
 
+
+
     return (
         <div>
             <Link to="/">Home</Link>
