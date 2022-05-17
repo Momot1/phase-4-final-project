@@ -24,7 +24,10 @@ function Cart({user, setUser}){
         return <></>
     }
 
-    console.log(user.cart)
+    if(user.cart.cart.length === 0){
+        return <h3>Hi {user.name}, You're cart is empty.</h3>
+    }
+
 
     const productElements = user.cart.cart.map(product => <div key={product.id}><Link to={`/products/${product.product.id}`}>{product.product.name} - ${addZeros(product.product.price)}</Link> <p>{product.product.description}<button onClick={() => removeFromCart(product.id)}>Remove From Cart</button></p></div>)
 

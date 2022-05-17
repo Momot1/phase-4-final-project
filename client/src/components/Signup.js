@@ -44,10 +44,10 @@ function Signup({setUser}){
                 <input type="text" placeholder="Full Name" value={formData.name} onChange={e => updateForm(e, "name")} required/><br/>
                 <label>Birthday: </label>
                 <input type="date" value={formData.birthdate} onChange={e => updateForm(e, "birthdate")}/><br/>
-                <label>Username: </label>
-                <input type="text" placeholder="Username" value={formData.username} onChange={e => updateForm(e, "username")} required/><br/>
                 <label>Email: </label>
                 <input type="email" placeholder="Email" value={formData.email} onChange={e => updateForm(e, "email")} required/><br/>
+                <label>Username: </label>
+                <input type="text" placeholder="Username" value={formData.username} onChange={e => updateForm(e, "username")} required/><br/>
                 <label>Password: </label>
                 <input type="password" placeholder="Password" value={formData.password} onChange={e => updateForm(e, "password")} required/><br/>
                 <label>Repeat password: </label>
