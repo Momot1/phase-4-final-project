@@ -7,17 +7,24 @@ function Navbar({onSearchSubmit, user}){
 
     const history = useHistory()
 
-    function onSearch(search){
+    function onSearch(e){
+        e.preventDefault()
         onSearchSubmit(search)
         history.push("/")
     }
-    // console.log(user.cart.cart.length)
+    
+
+    function onTestEvent(){
+        console.log("submitted")
+    }
 
     return (
         <div>
             <Link to="/">Home</Link>
+            <form onSubmit={onSearch}>
             <input type="text" value={search} onChange={e => setSearch(e.target.value)} placeholder="Search"/>
-            <button type="button" onClick={() => onSearch(search)}>Search</button>
+            <button type="submit" >Search</button>
+            </form>
             {user ? 
                 <>
                     <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{user.name}</button>
