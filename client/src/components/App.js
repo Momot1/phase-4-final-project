@@ -13,8 +13,7 @@ function App() {
 
   const [user, setUser] = useState(null)
   const [products, setProducts] = useState([])
-
-  console.log(user)
+  const [search, setSearch] = useState("")
 
 
   useEffect(() => {
@@ -32,20 +31,22 @@ function App() {
       .then(setProducts)
     }, [])
 
-  
+  function onSearch(search){
+    setSearch(search)
+  }
 
-  console.log(user)
+  const filteredProducts = products.filter(product => product.name.toLowerCase().includes(search.toLowerCase()))
 
   return (
     <BrowserRouter>
-      <Navbar user={user} />
+      <Navbar user={user} onSearch={onSearch}/>
 
       <Switch>
-        <Route exact path = "/"><Home products={products} setProducts={setProducts}/></Route>
+        <Route exact path = "/"><Home products={filteredProducts} setProducts={setProducts}/></Route>
         <Route path="/login"><Login setUser={setUser}/></Route>
         <Route path="/signup"><Signup setUser={setUser}/></Route>
-        <Route path="/cart"><Cart user={user} products={products}/></Route>
-        <Route path="/products/:id"><Product user={user}/></Route>
+        <Route path="/cart"><Cart user={user} setUser={setUser}/></Route>
+        <Route path="/products/:id"><Product user={user} setUser={setUser}/></Route>
         <Route path="/:username/about"><UserProfile /></Route>
         <Route path="/logout"><Logout setUser={setUser}/></Route>
         <Route path="/">404 NOT FOUND</Route>

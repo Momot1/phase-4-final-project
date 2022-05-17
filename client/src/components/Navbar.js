@@ -11,7 +11,7 @@ function Navbar({onSearch, user}){
         <div>
             <Link to="/">Home</Link>
             <input type="text" value={search} onChange={e => setSearch(e.target.value)} placeholder="Search"/>
-            <button type="button">Search</button>
+            <button type="button" onClick={() => onSearch(search)}>Search</button>
             {user ? 
                 <>
                     <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{user.name}</button>

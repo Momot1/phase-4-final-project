@@ -2,7 +2,7 @@ import { Link } from "react-router-dom"
 import { addZeros } from "./functions"
 
 
-function Cart({user}){
+function Cart({user, setUser}){
 
     // console.log(user.cart.products)
 
@@ -17,7 +17,7 @@ function Cart({user}){
             method: "DELETE", 
         }) //remove correct item from cart
         .then(resp => resp.json())
-        .then(console.log)//filter user
+        .then(setUser)//filter user
     }
 
     if(!user){

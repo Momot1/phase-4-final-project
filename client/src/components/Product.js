@@ -1,16 +1,18 @@
-import { useParams } from "react-router-dom"
+import { useParams, useHistory } from "react-router-dom"
 import { addZeros } from "./functions.js"
 import Review from "./Review.js"
 import { useState, useEffect } from "react"
 
 
-function Product({user}){
+function Product({user, setUser}){
     const [isClicked, setIsClicked] = useState(false)
     const [product, setProduct] = useState(null)
     const [formData, setFormData] = useState({
         rating: "",
         description: ""
     })
+
+    const history = useHistory()
 
     const { id } = useParams()
 
@@ -33,7 +35,10 @@ function Product({user}){
     }
 
     function addToCart(){
-        fetch("/addtocart", {
+        if(!user){
+            history.push("/login")
+        } else{
+            fetch("/addtocart", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -41,9 +46,11 @@ function Product({user}){
             body: JSON.stringify({
                 product_id: id
             })
-        })
-        .then(resp => resp.json())
-        .then(console.log) //Update user cart on frontend if comes back with no error
+            })
+            .then(resp => resp.json())
+            .then(setUser) //Update user cart on frontend if comes back with no error
+        }
+        
     }
 
     
