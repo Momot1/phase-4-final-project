@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { useHistory } from "react-router-dom"
 
 function ChangePassword({user, setUser}){
     const [formData, setFormData] = useState({
@@ -6,8 +7,13 @@ function ChangePassword({user, setUser}){
         password: "",
         password_confirmation: ""
     })
+    const history = useHistory()
 
     const [errors, setErros] = useState({errors: []})
+
+    if(!user){
+            return <></>
+    }
 
     function updateForm(e, input){
         setFormData({...formData, [input]: e.target.value})
@@ -25,15 +31,17 @@ function ChangePassword({user, setUser}){
         })
         .then(resp => {
             if(resp.ok){
-                resp.json().then(setUser)
+                resp.json().then(user => {
+                    setUser(user)
+                    setErros({errors: []})
+                })
             } else{
-                resp.json().then(setErros)
+                resp.json().then(errors => {
+                    setErros(errors)
+                    setFormData({old_password: "", password: "", password_confirmation: ""})
+                })
             }
         })
-    }
-
-    if(!user){
-        return <></>
     }
 
     const errorElements = errors.errors.map(error => <div key={error} className="alert alert-danger">- {error}</div>)
@@ -59,8 +67,8 @@ function ChangePassword({user, setUser}){
                     </div>
                     <input type="password" className="form-control" aria-label="Confirm New Password" aria-describedby="inputGroup-sizing-default" value={formData.password_confirmation} onChange={e => updateForm(e, "password_confirmation")}/><br/> 
                 </div>
+                <button type="submit">Update</button><br/><br/>
                 {errors.errors.length>0 ? errorElements : null}
-                <button type="submit">Update</button>
             </form>
         </div>
     )
