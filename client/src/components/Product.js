@@ -53,8 +53,6 @@ function Product({user, setUser}){
         
     }
 
-    
-
     useEffect(() => {
         fetch(`/products/${id}`)
         .then(resp => resp.json())
@@ -68,22 +66,6 @@ function Product({user, setUser}){
         return <></>
     }
 
-    function isInCart(){
-        if(!user){
-            return true
-        }
-        
-        const test = user.cart.cart.filter(item => item.product = product)
-
-        if(test.length > 0){
-            return false
-        } else{
-            return true
-        }
-
-        // return true
-    }
-
     const reviewElements = product.reviews.map(review => <Review key={review.id} review={review}/>)
 
     return (
@@ -93,8 +75,7 @@ function Product({user, setUser}){
             <p>{product.description}</p>
 
 
-            {isInCart() ? <button onClick={addToCart}>Add to cart <i className="bi bi-cart-plus"></i></button> : <button>Item in cart <i class="bi bi-cart-plus-fill"></i></button>}
-            <br/>
+            <button onClick={addToCart}>Add to cart <i className="bi bi-cart-plus"></i></button><br/>
             {reviewElements}
             {user ? <button onClick={() => setIsClicked(!isClicked)}>New Review</button> : null}
             {isClicked  ? 
