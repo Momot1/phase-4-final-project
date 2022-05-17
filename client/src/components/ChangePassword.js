@@ -34,6 +34,8 @@ function ChangePassword({user, setUser}){
                 resp.json().then(user => {
                     setUser(user)
                     setErros({errors: []})
+                    history.push(`/${user.username}/about`)
+                    alert("Password changed successfully")
                 })
             } else{
                 resp.json().then(errors => {

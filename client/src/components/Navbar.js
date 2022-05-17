@@ -10,6 +10,7 @@ function Navbar({onSearchSubmit, user}){
     function onSearch(e){
         e.preventDefault()
         onSearchSubmit(search)
+        setSearch("")
         history.push("/")
     }
 
