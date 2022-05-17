@@ -1,10 +1,16 @@
-import { Link } from "react-router-dom"
+import { Link, useHistory } from "react-router-dom"
 import { useState } from "react"
 
 
-function Navbar({onSearch, user}){
+function Navbar({onSearchSubmit, user}){
     const [search, setSearch] = useState("")
 
+    const history = useHistory()
+
+    function onSearch(search){
+        onSearchSubmit(search)
+        history.push("/")
+    }
     // console.log(user.cart.cart.length)
 
     return (

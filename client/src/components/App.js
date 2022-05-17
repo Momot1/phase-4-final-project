@@ -41,7 +41,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Navbar user={user} onSearch={onSearch}/>
+      <Navbar user={user} onSearchSubmit={onSearch}/>
 
       <Switch>
         <Route exact path = "/"><Home products={filteredProducts} setProducts={setProducts}/></Route>
