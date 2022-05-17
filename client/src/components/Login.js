@@ -32,7 +32,7 @@ function Login({setUser}){
                 })
             }
         })
-    }
+    } 
 
     function updateForm(e, input){
         setFormData({...formData, [input]: e.target.value})
@@ -46,7 +46,7 @@ function Login({setUser}){
                 <label>Password</label>
                 <input type="password" placeholder="Password" value={formData.password} onChange={e => updateForm(e, "password")} required/><br/>
                 <button type="submit">Login</button><br/>
-                {errors ? <>{errors.error}<br/></> : null}
+                {errors ? <div className="alert alert-danger">{errors.error}<br/></div> : null}
                 <Link to="/signup">Don't have an account? Sign up</Link>
             </form>
         </div>

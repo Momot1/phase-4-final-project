@@ -11,6 +11,7 @@ function Product({user, setUser}){
         rating: "",
         description: ""
     })
+    const [addedToCart, setAddedToCart] = useState(false)
 
     const history = useHistory()
 
@@ -38,6 +39,7 @@ function Product({user, setUser}){
         if(!user){
             history.push("/login")
         } else{
+            setAddedToCart(true)
             fetch("/addtocart", {
             method: "POST",
             headers: {
@@ -48,7 +50,9 @@ function Product({user, setUser}){
             })
             })
             .then(resp => resp.json())
-            .then(setUser) //Update user cart on frontend if comes back with no error
+            .then(user => {
+                setUser(user)
+            }) //Update user cart on frontend if comes back with no error
         }
         
     }
@@ -66,6 +70,8 @@ function Product({user, setUser}){
         return <></>
     }
 
+    
+
     const reviewElements = product.reviews.map(review => <Review key={review.id} review={review}/>)
 
     return (
@@ -76,6 +82,14 @@ function Product({user, setUser}){
 
 
             <button onClick={addToCart}>Add to cart <i className="bi bi-cart-plus"></i></button><br/>
+
+
+            {addedToCart ? <div class="alert alert-success" role="alert">
+                    Item added to cart <button onClick={() => setAddedToCart(false)}>X</button>
+                </div> : null}
+
+
+
             {reviewElements}
             {user ? <button onClick={() => setIsClicked(!isClicked)}>New Review</button> : null}
             {isClicked  ? 

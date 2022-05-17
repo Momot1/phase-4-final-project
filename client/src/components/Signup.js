@@ -12,6 +12,8 @@ function Signup({setUser}){
         password_confirmation: ""
     })
 
+    const [errors, setErrors] = useState({errors: []})
+
     function onSignup(e){
         e.preventDefault()
 
@@ -28,10 +30,19 @@ function Signup({setUser}){
                     window.history.go(-2)
                 })
             } else{
-                resp.json().then(console.log)
+                resp.json().then(errors => {
+                    setErrors(errors)
+                    setFormData({...formData, password: "", password_confirmation: ""})
+                })
             }
         })
     }
+
+
+    const errorElements = errors.errors.map(error => <div key={error} className="alert alert-danger">- {error}</div>)
+    
+
+    
 
     function updateForm(e, input){
         setFormData({...formData, [input]: e.target.value})
@@ -53,6 +64,7 @@ function Signup({setUser}){
                 <label>Repeat password: </label>
                 <input type="password" placeholder="Password Confirmation" value={formData.password_confirmation} onChange={e => updateForm(e, "password_confirmation")} required/><br/>
                 <button type="submit">Sign Up</button><br/>
+                {errors.errors.length>0 ? errorElements : null}
                 <Link to="/login">Already have an account? Login</Link>
             </form>
         </div>
