@@ -57,7 +57,7 @@ function Signup({setUser}){
                 </div>
                 <div className="input-group mb-3">
                     <span className="input-group-text" aria-label="Birthday">Birthday:</span>
-                    <input type="date" value={formData.birthdate} onChange={e => updateForm(e, "birthdate")} className="form-control" aria-label="Birthday" aria-describedby="inputGroup-sizing-default"/><br/>    
+                    <input type="date" value={formData.birthdate} onChange={e => updateForm(e, "birthdate")} className="form-control" aria-label="Birthday" aria-describedby="inputGroup-sizing-default" required/><br/>    
                 </div>
                 <div className="input-group mb-3">
                     <span className="input-group-text" aria-label="Email">Email:</span>

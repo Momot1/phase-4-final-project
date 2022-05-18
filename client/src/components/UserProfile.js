@@ -15,12 +15,11 @@ function UserProfile({user, setUser}){
         } else{
             console.log("not confirmed")
         }
-        
     }
 
     return (
         <div style={{textAlign: "center"}}>
-            <h3>Profile for {user.name}</h3>
+            <h3 className="text-capitalize">Profile for {user.name}</h3>
             <h4>Username: {user.username}</h4>
             <h4>Email: {user.email}</h4>
             <h4>Birthday: {user.birthdate}</h4>

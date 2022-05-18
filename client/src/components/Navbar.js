@@ -26,7 +26,7 @@ function Navbar({onSearchSubmit, user}){
 
             {user ? 
                 <>
-                    <button className="nav-link dropdown-toggle btn-light px-1 my-0" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{user.name}</button>
+                    <button className="nav-link dropdown-toggle btn-light px-1 my-0 text-capitalize" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{user.name}</button>
                     <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <Link to={`/${user.username}/about`}>Profile</Link><br/>
                         <Link to="/cart">My Cart {user.cart.cart.length > 0 ? `(${user.cart.cart.length})`: null}</Link><br/>
