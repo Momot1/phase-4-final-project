@@ -49,7 +49,7 @@ function ChangePassword({user, setUser}){
     const errorElements = errors.errors.map(error => <div key={error} className="alert alert-danger">- {error}</div>)
 
     return (
-        <div className="mx-auto" style={{width: "30%"}}>
+        <div className="mx-auto" style={{width: "30%", textAlign: "center"}}>
             <br/>
             <form onSubmit={handleUserUpdateChange} className="align-items-center">
                 <div className="input-group mb-3">

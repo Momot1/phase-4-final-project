@@ -39,7 +39,7 @@ function Login({setUser}){
     }
 
     return( 
-        <div className="mx-auto" style={{width: "25%"}}>
+        <div className="mx-auto" style={{width: "25%", textAlign: "center"}}>
             <form onSubmit={onLogin} className="align-items-center">
                 <br/><div className="input-group mb-3">
                 <span className="input-group-text" aria-label="Username">Username:</span>

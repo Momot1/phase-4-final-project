@@ -19,7 +19,7 @@ function UserProfile({user, setUser}){
     }
 
     return (
-        <div>
+        <div style={{textAlign: "center"}}>
             <h3>Profile for {user.name}</h3>
             <h4>Username: {user.username}</h4>
             <h4>Email: {user.email}</h4>

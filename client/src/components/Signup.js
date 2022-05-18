@@ -49,7 +49,7 @@ function Signup({setUser}){
     }
 
     return( 
-        <div className="mx-auto" style={{width: "50%"}}>
+        <div className="mx-auto" style={{width: "50%", textAlign: "center"}}>
             <br/><form onSubmit={onSignup} className="align-items-center">
                 <div className="input-group mb-3">
                     <span className="input-group-text" aria-label="Name">Name:</span>
