@@ -39,15 +39,21 @@ function Login({setUser}){
     }
 
     return( 
-        <div>
-            <form onSubmit={onLogin}>
-                <label>Username:</label>
-                <input type="text" placeholder="Username" value={formData.username} onChange={e => updateForm(e, "username")} required/><br/>
-                <label>Password</label>
-                <input type="password" placeholder="Password" value={formData.password} onChange={e => updateForm(e, "password")} required/><br/>
-                <button type="submit">Login</button><br/>
+        <div className="mx-auto" style={{width: "25%"}}>
+            <form onSubmit={onLogin} className="align-items-center">
+                <br/><div className="input-group mb-3">
+                <span className="input-group-text" aria-label="Username">Username:</span>
+                    <input type="text" placeholder="Username" value={formData.username} onChange={e => updateForm(e, "username")} className="form-control" aria-label="Username" aria-describedby="inputGroup-sizing-default" required/><br/>
+                </div>
+                <div className="input-group mb-3">
+                    <span className="input-group-text" aria-label="Password">Password:</span>
+                    <input type="password" placeholder="Password" value={formData.password} onChange={e => updateForm(e, "password")} className="form-control" aria-label="Password" aria-describedby="inputGroup-sizing-default" required/><br/>    
+                </div>
+
+                <button type="submit" className="btn btn-light">Login</button><br/>
                 {errors ? <div className="alert alert-danger">{errors.error}<br/></div> : null}
                 <Link to="/signup">Don't have an account? Sign up</Link>
+                
             </form>
         </div>
     )

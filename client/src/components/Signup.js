@@ -50,7 +50,7 @@ function Signup({setUser}){
 
     return( 
         <div className="mx-auto" style={{width: "50%"}}>
-            <form onSubmit={onSignup} className="align-items-center">
+            <br/><form onSubmit={onSignup} className="align-items-center">
                 <div className="input-group mb-3">
                     <span className="input-group-text" aria-label="Name">Name:</span>
                     <input type="text" placeholder="Full Name" value={formData.name} onChange={e => updateForm(e, "name")} className="form-control" aria-label="Name" aria-describedby="inputGroup-sizing-default" required/><br/>
