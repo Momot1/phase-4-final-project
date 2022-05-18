@@ -25,7 +25,7 @@ function UserProfile({user, setUser}){
             <h4>Email: {user.email}</h4>
             <h4>Birthday: {user.birthdate}</h4>
             <Link to={`/${user.username}/about/password/change`}>Change password</Link><br/><br/>
-            <button onClick={handleDeleteAccount}>Delete Account</button>
+            <button onClick={handleDeleteAccount} className="btn btn-light">Delete Account</button>
         </div>
     )
 }
