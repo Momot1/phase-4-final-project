@@ -49,21 +49,34 @@ function Signup({setUser}){
     }
 
     return( 
-        <div>
-            <form onSubmit={onSignup}>
-                <label>Name: </label>
-                <input type="text" placeholder="Full Name" value={formData.name} onChange={e => updateForm(e, "name")} required/><br/>
-                <label>Birthday: </label>
-                <input type="date" value={formData.birthdate} onChange={e => updateForm(e, "birthdate")}/><br/>
-                <label>Email: </label>
-                <input type="email" placeholder="Email" value={formData.email} onChange={e => updateForm(e, "email")} required/><br/>
-                <label>Username: </label>
-                <input type="text" placeholder="Username" value={formData.username} onChange={e => updateForm(e, "username")}  required/><br/>
-                <label>Password: </label>
-                <input type="password" placeholder="Password" value={formData.password} onChange={e => updateForm(e, "password")} autoComplete="new-password" required/><br/>
-                <label>Repeat password: </label>
-                <input type="password" placeholder="Repeat Password" value={formData.password_confirmation} onChange={e => updateForm(e, "password_confirmation")} auto-complete="new-password" required/><br/>
-                <button type="submit">Sign Up</button><br/>
+        <div className="mx-auto" style={{width: "50%"}}>
+            <form onSubmit={onSignup} className="align-items-center">
+                <div className="input-group mb-3">
+                    <span className="input-group-text" aria-label="Name">Name:</span>
+                    <input type="text" placeholder="Full Name" value={formData.name} onChange={e => updateForm(e, "name")} className="form-control" aria-label="Name" aria-describedby="inputGroup-sizing-default" required/><br/>
+                </div>
+                <div className="input-group mb-3">
+                    <span className="input-group-text" aria-label="Birthday">Birthday:</span>
+                    <input type="date" value={formData.birthdate} onChange={e => updateForm(e, "birthdate")} className="form-control" aria-label="Birthday" aria-describedby="inputGroup-sizing-default"/><br/>    
+                </div>
+                <div className="input-group mb-3">
+                    <span className="input-group-text" aria-label="Email">Email:</span>
+                    <input type="email" placeholder="Email" value={formData.email} onChange={e => updateForm(e, "email")} className="form-control" aria-label="Email" aria-describedby="inputGroup-sizing-default" required/><br/>
+                </div>
+                <div className="input-group mb-3">
+                    <span className="input-group-text" aria-label="Username">Username:</span>
+                    <input type="text" placeholder="Username" value={formData.username} onChange={e => updateForm(e, "username")} className="form-control" aria-label="Username" aria-describedby="inputGroup-sizing-default" required/><br/>
+                </div>
+                <div className="input-group mb-3">
+                    <span className="input-group-text" aria-label="Password">Password:</span>
+                    <input type="password" placeholder="Password" value={formData.password} onChange={e => updateForm(e, "password")} autoComplete="new-password" className="form-control" aria-label="Password" aria-describedby="inputGroup-sizing-default" required/><br/>
+                </div>
+                <div className="input-group mb-3">
+                    <span className="input-group-text" aria-label="Repeat_password">Repeat Password:</span>
+                    <input type="password" placeholder="Repeat Password" value={formData.password_confirmation} onChange={e => updateForm(e, "password_confirmation")} auto-complete="new-password" className="form-control" aria-label="Repeat_password" aria-describedby="inputGroup-sizing-default" required/><br/>
+                </div>
+                
+                <button type="submit" className="btn btn-light">Sign Up</button><br/>
                 {errors.errors.length>0 ? errorElements : null}
                 <Link to="/login">Already have an account? Login</Link>
             </form>
