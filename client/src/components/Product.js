@@ -76,30 +76,44 @@ function Product({user, setUser}){
 
     return (
         <div>
-            <img src={product.image_url} alt={product.name} style={{width: "100%", maxWidth: "300px"}}/>
-            <h4>{product.name} - ${addZeros(product.price)}</h4>
-            <p>{product.description}</p>
+            <div className="d-flex flex-row mb-3">
+                <div style={{width: "20%"}}>
+                    <img src={product.image_url} alt={product.name} style={{width: "100%", maxWidth: "300px"}}/>
+                </div>
+                <div style={{width: "50%"}}>
+                    <h4>{product.name} - ${addZeros(product.price)}</h4>
+                    <p>{product.description}</p>
+                </div>
+            </div>
+            
 
+            <div style={{textAlign: "center"}}>
+                <button onClick={addToCart} className="btn btn-light">Add to cart <i className="bi bi-cart-plus"></i></button><br/>
+            </div>
 
-            <button onClick={addToCart}>Add to cart <i className="bi bi-cart-plus"></i></button><br/>
-
-
-            {addedToCart ? <div className="alert alert-success" role="alert">
-                    Item added to cart <button onClick={() => setAddedToCart(false)}>X</button>
+            {addedToCart ? <div className="alert alert-success mx-auto" role="alert" style={{width: "max-content", textAlign: "center"}}>
+                    Item added to cart <button onClick={() => setAddedToCart(false)} className="btn btn-light">X</button>
                 </div> : null}
 
-
+            
 
             {reviewElements}
-            {user ? <button onClick={() => setIsClicked(!isClicked)}>New Review</button> : null}
+            {user ? <div style={{textAlign: "center"}}><button onClick={() => setIsClicked(!isClicked)} className="btn btn-light">New Review</button></div> : null}
             {isClicked  ? 
-                <form onSubmit={onReviewSubmit}>
-                    <label>Rating: </label>
-                    <input type="number" max="5" min="1" value={formData.rating} onChange={e => updateForm(e, "rating")}></input>/5 stars<br/>
-                    <label>Review: </label>
-                    <input type="text" value={formData.description} onChange={e => updateForm(e, "description")}></input><br/>
-                    <button type="submit">Submit</button>
-                </form>
+                <div style={{width: "50%", textAlign: "center"}} className="mx-auto">
+                    <form onSubmit={onReviewSubmit} className="align-items-center">
+                        <div className="input-group mb-3">
+                            <span className="input-group-text" aria-label="Rating">Rating:</span>
+                            <input type="number" max="5" min="1" value={formData.rating} onChange={e => updateForm(e, "rating")} className="form-control" aria-label="Rating" aria-describedby="inputGroup-sizing-default" required></input>/5 stars<br/>    
+                        </div>
+                        <div className="input-group mb-3">
+                            <span className="input-group-text" aria-label="Review">Review:</span>
+                            <input type="text" value={formData.description} onChange={e => updateForm(e, "description")} className="form-control" aria-label="Review" aria-describedby="inputGroup-sizing-default" required></input><br/>    
+                        </div>
+                        
+                        <button type="submit" className="btn btn-light">Submit</button>
+                    </form>
+                </div>
             :null}
         </div>
     )

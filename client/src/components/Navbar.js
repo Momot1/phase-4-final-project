@@ -20,7 +20,7 @@ function Navbar({onSearchSubmit, user}){
             <Link to="/" className="nav-link btn btn-light">Home</Link>
 
             <form onSubmit={onSearch} role="search" className="d-flex align-self-center">
-                <input type="text" value={search} onChange={e => setSearch(e.target.value)} placeholder="Search" className=" h-75 form-control me-2"/>
+                <input type="text" value={search} onChange={e => setSearch(e.target.value)} placeholder="Search" className=" h-100 form-control me-2"></input>
                 <button type="submit" className="btn btn-light h-100 me-3">Search</button>
             </form>
 
