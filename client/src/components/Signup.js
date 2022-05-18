@@ -58,11 +58,11 @@ function Signup({setUser}){
                 <label>Email: </label>
                 <input type="email" placeholder="Email" value={formData.email} onChange={e => updateForm(e, "email")} required/><br/>
                 <label>Username: </label>
-                <input type="text" placeholder="Username" value={formData.username} onChange={e => updateForm(e, "username")} required/><br/>
+                <input type="text" placeholder="Username" value={formData.username} onChange={e => updateForm(e, "username")}  required/><br/>
                 <label>Password: </label>
-                <input type="password" placeholder="Password" value={formData.password} onChange={e => updateForm(e, "password")} required/><br/>
+                <input type="password" placeholder="Password" value={formData.password} onChange={e => updateForm(e, "password")} autoComplete="new-password" required/><br/>
                 <label>Repeat password: </label>
-                <input type="password" placeholder="Password Confirmation" value={formData.password_confirmation} onChange={e => updateForm(e, "password_confirmation")} required/><br/>
+                <input type="password" placeholder="Repeat Password" value={formData.password_confirmation} onChange={e => updateForm(e, "password_confirmation")} auto-complete="new-password" required/><br/>
                 <button type="submit">Sign Up</button><br/>
                 {errors.errors.length>0 ? errorElements : null}
                 <Link to="/login">Already have an account? Login</Link>

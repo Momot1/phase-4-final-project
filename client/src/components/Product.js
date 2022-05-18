@@ -76,7 +76,7 @@ function Product({user, setUser}){
 
     return (
         <div>
-            <img src={product.image_url} alt={product.name}/>
+            <img src={product.image_url} alt={product.name} style={{width: "100%", maxWidth: "300px"}}/>
             <h4>{product.name} - ${addZeros(product.price)}</h4>
             <p>{product.description}</p>
 
