@@ -17,7 +17,7 @@ function Home({ products }){
 
 
     return (
-        <div style={{backgroundColor: "white", margin: "0", height: "100%"}}>
+        <div style={{backgroundColor: "white", height: "100%", borderStyle: "solid", borderColor: "white"}}>
             <div className="mx-auto w-75" style={{ margin: "0.2%"}}>
                 {productElements}
             </div>    
