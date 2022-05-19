@@ -32,7 +32,12 @@ function Product({user, setUser}){
             body: JSON.stringify(formData)
         })
         .then(resp => resp.json())
-        .then(console.log)
+        .then(review => {
+            const productReviews = product.reviews
+            productReviews.push({id: review.id, description: review.description, rating: review.rating})
+            setProduct({...product, reviews: productReviews})
+            setFormData({rating: "", description: ""})
+        })
     }
 
     function addToCart(){

@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { useHistory } from "react-router-dom"
+import "./forms.css"
 
 function ChangePassword({user, setUser}){
     const [formData, setFormData] = useState({

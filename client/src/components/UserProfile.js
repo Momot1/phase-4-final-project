@@ -12,8 +12,6 @@ function UserProfile({user, setUser}){
             })
             .then(resp => resp.json())
             .then(() => setUser(null))
-        } else{
-            console.log("not confirmed")
         }
     }
 
