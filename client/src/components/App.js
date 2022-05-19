@@ -45,8 +45,8 @@ function App() {
 
       <Switch>
         <Route exact path = "/"><Home products={filteredProducts} setProducts={setProducts}/></Route>
-        <Route path="/login"><Login setUser={setUser}/></Route>
-        <Route path="/signup"><Signup setUser={setUser}/></Route>
+        <Route path="/login"><Login setUser={setUser} user={user}/></Route>
+        <Route path="/signup"><Signup setUser={setUser} user={user}/></Route>
         <Route path="/cart"><Cart user={user} setUser={setUser}/></Route>
         <Route path="/products/:id"><Product user={user} setUser={setUser}/></Route>
         <Route exact path="/:username/about"><UserProfile user={user} setUser={setUser}/></Route>

@@ -1,8 +1,13 @@
 import { useState } from "react"
-import { Link } from "react-router-dom"
+import { Link, useHistory } from "react-router-dom"
 import "./forms.css"
 
-function Signup({setUser}){
+function Signup({setUser, user}){
+    const history = useHistory()
+
+    if(user){
+        history.push("/")
+    }
 
     const [formData, setFormData] = useState({
         name: "",
