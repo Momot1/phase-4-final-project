@@ -16,13 +16,13 @@ function UserProfile({user, setUser}){
     }
 
     return (
-        <div style={{textAlign: "center"}}>
+        <div className = "mx-auto" style={{textAlign: "center", backgroundColor: "#d1d1d1", width: "max-content", padding: "0.5%", borderRadius: "20px", marginTop: "14%"}}>
             <h3 className="text-capitalize">Profile for {user.name}</h3>
             <h4>Username: {user.username}</h4>
             <h4>Email: {user.email}</h4>
             <h4>Birthday: {user.birthdate}</h4>
-            <Link to={`/${user.username}/about/password/change`}>Change password</Link><br/><br/>
-            <button onClick={handleDeleteAccount} className="btn btn-light">Delete Account</button>
+            <Link to={`/${user.username}/about/password/change`} className="btn-lg">Change password</Link><br/><br/>
+            <button onClick={handleDeleteAccount} className="btn btn-light btn-lg">Delete Account</button>
         </div>
     )
 }
