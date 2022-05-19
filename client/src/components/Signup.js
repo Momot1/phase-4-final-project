@@ -1,6 +1,5 @@
 import { useState } from "react"
 import { Link, useHistory } from "react-router-dom"
-import "./forms.css"
 
 function Signup({setUser, user}){
     const history = useHistory()
@@ -56,7 +55,7 @@ function Signup({setUser, user}){
 
     return( 
         <div className="mx-auto" style={{width: "50%", textAlign: "center"}}>
-                <form onSubmit={onSignup} className="align-items-center" style={{marginTop: "23%", padding: "1%", backgroundColor:"#d1d1d1", borderRadius: "20px"}}>
+                <form onSubmit={onSignup} className="align-items-center" style={{marginTop: "23%", padding: "1%", backgroundColor:"#d1d1d1", borderRadius: "20px", marginBottom: "5px"}}>
                 <div className="input-group mb-3">
                     <span className="input-group-text form-font-size" aria-label="Name">Name:</span>
                     <input type="text" placeholder="Full Name" value={formData.name} onChange={e => updateForm(e, "name")} className="form-control form-font-size" aria-label="Name" aria-describedby="inputGroup-sizing-default" required/><br/>

@@ -3,7 +3,7 @@ import { addZeros } from "./functions.js"
 
 function Home({ products }){
     const productElements = products.map(product => 
-        <div key={product.id} className="border d-flex flex-row mb-3">
+        <div key={product.id} className="border d-flex flex-row mb-3" style={{backgroundColor: "#f2f2f2"}}>
             <div style={{width: "max-content"}} className="p-2 border">
                 <img src={product.image_url} style={{maxWidth: "200px"}} alt={product.name}/>
             </div>
@@ -17,9 +17,12 @@ function Home({ products }){
 
 
     return (
-        <div className="mx-auto w-75" style={{ margin: "0.2%"}}>
-            {productElements}
+        <div style={{backgroundColor: "white", margin: "0", height: "100%"}}>
+            <div className="mx-auto w-75" style={{ margin: "0.2%"}}>
+                {productElements}
+            </div>    
         </div>
+        
     )
 }
 

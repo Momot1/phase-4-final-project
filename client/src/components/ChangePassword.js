@@ -1,6 +1,5 @@
 import { useState } from "react"
 import { useHistory } from "react-router-dom"
-import "./forms.css"
 
 function ChangePassword({user, setUser}){
     const [formData, setFormData] = useState({
@@ -47,27 +46,26 @@ function ChangePassword({user, setUser}){
         })
     }
 
-    const errorElements = errors.errors.map(error => <div key={error} className="alert alert-danger">- {error}</div>)
+    const errorElements = errors.errors.map(error => <div key={error} className="alert alert-danger form-font-size">- {error}</div>)
 
     return (
         <div className="mx-auto" style={{width: "30%", textAlign: "center"}}>
-            <br/>
-            <form onSubmit={handleUserUpdateChange} className="align-items-center">
+            <form onSubmit={handleUserUpdateChange} className="align-items-center" style={{padding: "1%", backgroundColor:"#d1d1d1", borderRadius: "20px", marginBottom: "5px", marginTop: "45.5%"}}>
                 <div className="input-group mb-3">
-                    <span className="input-group-text" aria-label="Old Password">Old Password:</span>
-                    <input type="password" className="form-control" aria-label="Old Password" aria-describedby="inputGroup-sizing-default" value={formData.old_password} onChange={e => updateForm(e, "old_password")}/>
+                    <span className="input-group-text form-font-size" aria-label="Old Password">Old Password:</span>
+                    <input type="password" className="form-control form-font-size" aria-label="Old Password" aria-describedby="inputGroup-sizing-default" value={formData.old_password} onChange={e => updateForm(e, "old_password")}/>
                 </div>
                 <div className="input-group mb-3">
-                    <span className="input-group-text" aria-label="New Password">New Password:</span> 
-                    <input type="password" className="form-control" aria-label="New Password" aria-describedby="inputGroup-sizing-default" value={formData.password} onChange={e => updateForm(e, "password")}/> 
+                    <span className="input-group-text form-font-size" aria-label="New Password">New Password:</span> 
+                    <input type="password" className="form-control form-font-size" aria-label="New Password" aria-describedby="inputGroup-sizing-default" value={formData.password} onChange={e => updateForm(e, "password")}/> 
                 </div>
-                <div className="input-group mb-3">        
-                    <span className="input-group-text" aria-label="Confirm New Password">Confirm New Password:</span>                    
-                    <input type="password" className="form-control" aria-label="Confirm New Password" aria-describedby="inputGroup-sizing-default" value={formData.password_confirmation} onChange={e => updateForm(e, "password_confirmation")}/><br/> 
+                <div className="input-group mb-3">
+                    <span className="input-group-text form-font-size" aria-label="Confirm New Password">Confirm New Password:</span>                    
+                    <input type="password" className="form-control form-font-size" aria-label="Confirm New Password" aria-describedby="inputGroup-sizing-default" value={formData.password_confirmation} onChange={e => updateForm(e, "password_confirmation")}/><br/> 
                 </div>
-                <button type="submit" className="btn btn-light">Update</button><br/><br/>
-                {errors.errors.length>0 ? errorElements : null}
+                <button type="submit" className="btn btn-light btn-lg">Update</button><br/><br/>
             </form>
+            {errors.errors.length>0 ? errorElements : null}
         </div>
     )
 }
