@@ -46,21 +46,22 @@ function Login({setUser, user}){
 
     return( 
         <div className="mx-auto" style={{width: "25%", textAlign: "center"}}>
-            <form onSubmit={onLogin} className="align-items-center">
-                <br/><div className="input-group mb-3">
-                <span className="input-group-text" aria-label="Username">Username:</span>
-                    <input type="text" placeholder="Username" value={formData.username} onChange={e => updateForm(e, "username")} className="form-control" aria-label="Username" aria-describedby="inputGroup-sizing-default" required/><br/>
+            <form onSubmit={onLogin} className="align-items-center border" style={{marginTop: "56.25%", padding: "1%", backgroundColor:"#d1d1d1", borderRadius: "20px"}}>
+                <div className="input-group mb-3">
+                    <span className="input-group-text form-font-size" aria-label="Username">Username:</span>
+                    <input type="text" placeholder="Username" value={formData.username} onChange={e => updateForm(e, "username")} className="form-control form-font-size" aria-label="Username" aria-describedby="inputGroup-sizing-default"required/><br/>
                 </div>
                 <div className="input-group mb-3">
-                    <span className="input-group-text" aria-label="Password">Password:</span>
-                    <input type="password" placeholder="Password" value={formData.password} onChange={e => updateForm(e, "password")} className="form-control" aria-label="Password" aria-describedby="inputGroup-sizing-default" required/><br/>    
+                    <span className="input-group-text form-font-size" aria-label="Password" >Password:</span>
+                    <input type="password" placeholder="Password" value={formData.password} onChange={e => updateForm(e, "password")} className="form-control form-font-size" aria-label="Password" aria-describedby="inputGroup-sizing-default" required/><br/>    
                 </div>
 
-                <button type="submit" className="btn btn-light">Login</button><br/>
-                {errors ? <div className="alert alert-danger">{errors.error}<br/></div> : null}
-                <Link to="/signup">Don't have an account? Sign up</Link>
+                <button type="submit" className="btn btn-light btn-lg">Login</button><br/>
+                
+                <Link to="/signup" className="btn-lg">Don't have an account? Sign up</Link>
                 
             </form>
+            {errors ? <div className="alert alert-danger form-font-size" >{errors.error}<br/></div> : null}
         </div>
     )
 }
