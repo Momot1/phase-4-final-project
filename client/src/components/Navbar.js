@@ -21,7 +21,7 @@ function Navbar({onSearchSubmit, user}){
 
             <form onSubmit={onSearch} role="search" className="d-flex w-75">
                 <input type="text" value={search} onChange={e => setSearch(e.target.value)} placeholder="Search" className=" form-control me-2" style={{margin: "0.2%"}}></input>
-                <button type="submit" className="btn btnlight btn-lg" style={{margin: "0.2%"}}>Search</button>
+                <button type="submit" className="btn btn-light btn-lg" style={{margin: "0.2%"}}>Search</button>
             </form>
 
             {user ? 
