@@ -4,8 +4,8 @@ import { addZeros } from "./functions.js"
 function Home({ products }){
     const productElements = products.map(product => 
         <div key={product.id} className="border d-flex flex-row mb-3">
-            <div style={{width: "max-content", minWidth: "20%"}} className="p-2">
-                <img src={product.image_url} style={{maxHeight: "100px"}}/>
+            <div style={{width: "max-content"}} className="p-2 border">
+                <img src={product.image_url} style={{maxWidth: "200px"}}/>
             </div>
             <div className="p-2">
                 <Link style={{color: "#3a4187", padding: "5px"}} className="text-uppercase" to={`/products/${product.id}`}>{product.name} - ${addZeros(product.price)}</Link> 
@@ -17,7 +17,7 @@ function Home({ products }){
 
 
     return (
-        <div className="mx-auto" style={{width: "50%"}}>
+        <div className="mx-auto" style={{width: "75%"}}>
             {productElements}
         </div>
     )
