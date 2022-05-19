@@ -9,7 +9,7 @@ function Home({ products }){
             </div>
             <div className="p-2">
                 <Link style={{color: "#3a4187", padding: "5px"}} className="text-uppercase" to={`/products/${product.id}`}>{product.name} - ${addZeros(product.price)}</Link> 
-                <p style={{padding: "5px"}}>{product.description}</p>    
+                <p style={{padding: "5px"}}>{product.description}</p>
             </div>
             
         </div>
