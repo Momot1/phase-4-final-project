@@ -16,7 +16,7 @@ function UserProfile({user, setUser}){
     }
 
     return (
-        <div className = "mx-auto" style={{textAlign: "center", backgroundColor: "#d1d1d1", width: "max-content", padding: "0.5%", borderRadius: "20px", marginTop: "14%"}}>
+        <div className = "mx-auto" style={{textAlign: "center", backgroundColor: "#d1d1d1", width: "max-content", padding: "1.5%", borderRadius: "20px", marginTop: "14%"}}>
             <h3 className="text-capitalize">Profile for {user.name}</h3>
             <h4>Username: {user.username}</h4>
             <h4>Email: {user.email}</h4>

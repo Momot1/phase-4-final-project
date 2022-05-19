@@ -50,7 +50,7 @@ function ChangePassword({user, setUser}){
 
     return (
         <div className="mx-auto" style={{width: "30%", textAlign: "center"}}>
-            <form onSubmit={handleUserUpdateChange} className="align-items-center" style={{padding: "1%", backgroundColor:"#d1d1d1", borderRadius: "20px", marginBottom: "5px", marginTop: "45.5%"}}>
+            <form onSubmit={handleUserUpdateChange} className="align-items-center" style={{padding: "3%", backgroundColor:"#d1d1d1", borderRadius: "20px", marginBottom: "5px", marginTop: "45.5%"}}>
                 <div className="input-group mb-3">
                     <span className="input-group-text form-font-size" aria-label="Old Password">Old Password:</span>
                     <input type="password" className="form-control form-font-size" aria-label="Old Password" aria-describedby="inputGroup-sizing-default" value={formData.old_password} onChange={e => updateForm(e, "old_password")}/>
