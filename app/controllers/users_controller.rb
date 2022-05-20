@@ -3,7 +3,7 @@ class UsersController < ApplicationController
     skip_before_action :authorized, only: :create
 
     def create
-        user = User.create(user_create_params)
+        user = User.create(username: params[:username].downcase.gsub(/\s+/, ""), email: params[:email].downcase.gsub(/\s+/, ""), birthdate: params[:birthdate], name: params[:name], password: params[:password], password_confirmation: params[:password_confirmation])
         if user.valid?
             session[:user_id] = user.id
             render json: user, status: :created
@@ -61,7 +61,7 @@ class UsersController < ApplicationController
     private
 
     def user_create_params
-        params.permit(:username, :email, :birthdate, :name, :password, :password_confirmation)
+        params.permit(:email, :birthdate, :name, :password, :password_confirmation)
     end
 
     def user_update_params

@@ -30,9 +30,8 @@ function Signup({setUser, user}){
         .then(resp => {
             if(resp.ok){
                 resp.json().then(user => {
-                    console.log(user)
-                    setUser(user)
                     window.history.go(-2)
+                    setUser(user)
                 })
             } else{
                 resp.json().then(errors => {

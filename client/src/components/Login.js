@@ -27,8 +27,9 @@ function Login({setUser, user}){
             if(resp.ok){
                 resp.json().then(user => {
                     setErrors(null)
-                    setUser(user)
                     window.history.back()
+                    setUser(user)
+                    
                 })
             } else{
                 resp.json().then(errors => {

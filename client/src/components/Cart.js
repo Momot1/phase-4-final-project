@@ -29,12 +29,23 @@ function Cart({user, setUser}){
     }
 
 
-    const productElements = user.cart.cart.map(product => <div key={product.id}><Link style={{color: "#3a4187", padding: "5px"}} className="text-uppercase" to={`/products/${product.product.id}`}>{product.product.name} - ${addZeros(product.product.price)}</Link> <p>{product.product.description}<button className="btn btn-light" onClick={() => removeFromCart(product.id)}>Remove From Cart</button></p></div>)
+    const productElements = user.cart.cart.map(product => 
+        <div key={product.id} className="border d-flex flex-row mb-3">
+            <div style={{width: "max-content"}} className="p-2 border">
+                <img src={product.product.image_url} style={{maxWidth: "200px"}} alt={product.product.name}/>
+            </div>
+            <div className="p-2">
+                <Link style={{color: "#3a4187", padding: "5px", fontSize: "1.3em"}} className="text-uppercase" to={`/products/${product.product.id}`}>{product.product.name} - ${addZeros(product.product.price)}</Link> 
+                <p style={{padding: "5px", fontSize: "1.1em"}}>{product.product.description}<button className="btn btn-light btn-lg" onClick={() => removeFromCart(product.id)}>Remove From Cart</button></p>
+            </div>
+                                                                
+        </div>
+    )
 
     return (
-        <div className="mx-auto" style={{textAlign: "center", width:"75%"}}>
+        <div className="mx-auto w-75" style={{ margin: "0.2%"}}>
             {productElements}
-            <h5>Cart total: ${addZeros(user.cart.total)}</h5>
+            <h4 style={{textAlign: "center"}}>Cart total: ${addZeros(user.cart.total)}</h4>
         </div>
     )
 }

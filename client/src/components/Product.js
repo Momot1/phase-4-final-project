@@ -34,9 +34,10 @@ function Product({user, setUser}){
         .then(resp => resp.json())
         .then(review => {
             const productReviews = product.reviews
-            productReviews.push({id: review.id, description: review.description, rating: review.rating})
+            productReviews.push({id: review.id, description: review.description, rating: review.rating, user_id: user.id})
             setProduct({...product, reviews: productReviews})
             setFormData({rating: "", description: ""})
+            setIsClicked(false)
         })
     }
 
@@ -57,9 +58,16 @@ function Product({user, setUser}){
             .then(resp => resp.json())
             .then(user => {
                 setUser(user)
-            }) //Update user cart on frontend if comes back with no error
+            })
         }
-        
+    }
+
+    function onDeleteReview(id){
+        fetch(`/reviews/${id}`, {
+            method: "DELETE"
+        })
+        .then(resp => resp.json())
+        .then(console.log)
     }
 
     useEffect(() => {
@@ -77,7 +85,7 @@ function Product({user, setUser}){
 
     
 
-    const reviewElements = product.reviews.map(review => <Review key={review.id} review={review}/>)
+    const reviewElements = product.reviews.map(review => <Review key={review.id} review={review} user={user} onDeleteReview={onDeleteReview}/>)
 
     return (
         <div>
