@@ -17,16 +17,16 @@ function Navbar({onSearchSubmit, user}){
     return (
         <div className="nav justify-content-center bg-dark ">
 
-            <Link to="/" className="nav-link btn btn-light btn-lg" style={{margin: "0.2%"}}>Home</Link>
+            <Link to="/" className="nav-link btn btn-light btn-lg margin-small">Home</Link>
 
             <form onSubmit={onSearch} role="search" className="d-flex w-75">
-                <input type="text" value={search} onChange={e => setSearch(e.target.value)} placeholder="Search" className=" form-control me-2" style={{margin: "0.2%"}}></input>
-                <button type="submit" className="btn btn-light btn-lg" style={{margin: "0.2%"}}>Search</button>
+                <input type="text" value={search} onChange={e => setSearch(e.target.value)} placeholder="Search" className=" form-control me-2 margin-small"></input>
+                <button type="submit" className="btn btn-light btn-lg margin-small">Search</button>
             </form>
 
             {user ? 
                 <>
-                    <button className="nav-link dropdown-toggle btn-light px-1  text-capitalize btn-lg" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style={{margin: "0.2%"}}>{user.name}</button>
+                    <button className="nav-link dropdown-toggle btn-light px-1  text-capitalize btn-lg margin-small" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{user.name}</button>
                     <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <Link to={`/${user.username}/about`} className="btn-lg">Profile</Link><br/>
                         <Link to="/cart" className="btn-lg">My Cart {user.cart.cart.length > 0 ? `(${user.cart.cart.length})`: null}</Link><br/>
@@ -37,7 +37,7 @@ function Navbar({onSearchSubmit, user}){
                 </>
                 : 
                 <>
-                    <Link to="/login" className="nav-link btn btn-light btn-lg" style={{margin: "0.2%"}}>Login</Link>
+                    <Link to="/login" className="nav-link btn btn-light btn-lg margin-small">Login</Link>
                 </>}
         </div>
     )

@@ -37,7 +37,7 @@ function Cart({user, setUser}){
     )
 
     return (
-        <div className="mx-auto w-75" id="cart-div">
+        <div className="mx-auto w-75" id="margin-small">
             {productElements}
             <h4 className="text-center cart-h4">Cart total: ${parseFloat(addZeros(user.cart.total)).toFixed(2)}</h4>
         </div>

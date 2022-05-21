@@ -43,7 +43,7 @@ function Signup({setUser, user}){
     }
 
 
-    const errorElements = errors.errors.map(error => <div key={error} className="alert alert-danger form-font-size mx-auto" style={{width: "50%"}}>- {error}</div>)
+    const errorElements = errors.errors.map(error => <div key={error} className="alert alert-danger form-font-size mx-auto w-50">- {error}</div>)
     
 
     
@@ -53,8 +53,8 @@ function Signup({setUser, user}){
     }
 
     return( 
-        <div className="mx-auto" style={{width: "50%", textAlign: "center"}}>
-                <form onSubmit={onSignup} className="align-items-center" style={{padding: "3%", backgroundColor:"#d1d1d1", borderRadius: "20px", marginBottom: "5px"}}>
+        <div className="mx-auto w-50 text-center">
+                <form onSubmit={onSignup} className="align-items-center form-styles">
                 <div className="input-group mb-3">
                     <span className="input-group-text form-font-size" aria-label="Name">Name:</span>
                     <input type="text" placeholder="Full Name" value={formData.name} onChange={e => updateForm(e, "name")} className="form-control form-font-size" aria-label="Name" aria-describedby="inputGroup-sizing-default" required/><br/>

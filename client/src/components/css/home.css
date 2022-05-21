@@ -5,6 +5,21 @@
     border-color: white;
 }
 
-#home-products-container{
-    margin: 0.2%;
+.div-product-background{
+    background-color: #f2f2f2;
+}
+
+.home-product-image{
+    max-width: 200px;
+}
+
+.home-product-link{
+    color: #3a4187;
+    padding: 5px;
+    font-size: 1.3
+}
+
+.home-p{
+    padding: 5px;
+    font-size: 1.1em;
 }

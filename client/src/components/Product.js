@@ -108,7 +108,7 @@ function Product({user, setUser}){
                 <button onClick={addToCart} className="btn btn-light btn-lg">Add to cart <i className="bi bi-cart-plus"></i></button><br/>
             </div>
 
-            {addedToCart ? <div className="alert alert-success mx-auto btn-lg text-center" role="alert" style={{width: "max-content"}}>
+            {addedToCart ? <div className="alert alert-success mx-auto btn-lg text-center max-content-width" role="alert">
                     Item added to cart <button onClick={() => setAddedToCart(false)} className="btn btn-light">X</button>
                 </div> : null}
 
