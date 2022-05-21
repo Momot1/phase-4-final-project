@@ -4,7 +4,7 @@ function Review({review, user, onDeleteReview}){
     function testUser(){
         if(!user){
             return false
-        } else if(user.id === review.user_id){
+        } else if(user.id === review.user_id || user.is_admin){
             return true
         } else{
             return false

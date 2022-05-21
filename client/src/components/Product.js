@@ -67,7 +67,10 @@ function Product({user, setUser}){
             method: "DELETE"
         })
         .then(resp => resp.json())
-        .then(console.log)
+        .then(() => {
+            const updatedReviews = product.reviews.filter(review => review.id !== id)
+            setProduct({...product, reviews: updatedReviews})
+        })
     }
 
     useEffect(() => {
