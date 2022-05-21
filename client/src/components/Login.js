@@ -46,7 +46,7 @@ function Login({setUser, user}){
 
     return( 
         <div className="mx-auto" style={{width: "25%", textAlign: "center"}}>
-            <form onSubmit={onLogin} className="align-items-center" style={{marginTop: "56.25%", padding: "3%", backgroundColor:"#d1d1d1", borderRadius: "20px", marginBottom: "5px"}}>
+            <form onSubmit={onLogin} className="align-items-center" style={{padding: "3%", backgroundColor:"#d1d1d1", borderRadius: "20px", marginBottom: "5px"}}>
                 <div className="input-group mb-3">
                     <span className="input-group-text form-font-size" aria-label="Username">Username:</span>
                     <input type="text" placeholder="Username" value={formData.username} onChange={e => updateForm(e, "username")} className="form-control form-font-size" aria-label="Username" aria-describedby="inputGroup-sizing-default"required/><br/>

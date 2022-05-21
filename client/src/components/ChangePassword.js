@@ -50,18 +50,18 @@ function ChangePassword({user, setUser}){
 
     return (
         <div className="mx-auto" style={{width: "30%", textAlign: "center"}}>
-            <form onSubmit={handleUserUpdateChange} className="align-items-center" style={{padding: "3%", backgroundColor:"#d1d1d1", borderRadius: "20px", marginBottom: "5px", marginTop: "45.5%"}}>
+            <form onSubmit={handleUserUpdateChange} className="align-items-center" style={{padding: "5%", backgroundColor:"#d1d1d1", borderRadius: "20px", marginBottom: "5px"}}>
                 <div className="input-group mb-3">
                     <span className="input-group-text form-font-size" aria-label="Old Password">Old Password:</span>
-                    <input type="password" className="form-control form-font-size" aria-label="Old Password" aria-describedby="inputGroup-sizing-default" value={formData.old_password} onChange={e => updateForm(e, "old_password")}/>
+                    <input type="password" className="form-control form-font-size" aria-label="Old Password" aria-describedby="inputGroup-sizing-default" value={formData.old_password} onChange={e => updateForm(e, "old_password")} required/>
                 </div>
                 <div className="input-group mb-3">
                     <span className="input-group-text form-font-size" aria-label="New Password">New Password:</span> 
-                    <input type="password" className="form-control form-font-size" aria-label="New Password" aria-describedby="inputGroup-sizing-default" value={formData.password} onChange={e => updateForm(e, "password")}/> 
+                    <input type="password" className="form-control form-font-size" aria-label="New Password" aria-describedby="inputGroup-sizing-default" value={formData.password} onChange={e => updateForm(e, "password")} required/> 
                 </div>
                 <div className="input-group mb-3">
                     <span className="input-group-text form-font-size" aria-label="Confirm New Password">Confirm New Password:</span>                    
-                    <input type="password" className="form-control form-font-size" aria-label="Confirm New Password" aria-describedby="inputGroup-sizing-default" value={formData.password_confirmation} onChange={e => updateForm(e, "password_confirmation")}/><br/> 
+                    <input type="password" className="form-control form-font-size" aria-label="Confirm New Password" aria-describedby="inputGroup-sizing-default" value={formData.password_confirmation} onChange={e => updateForm(e, "password_confirmation")} required/><br/> 
                 </div>
                 <button type="submit" className="btn btn-light btn-lg">Update</button><br/><br/>
             </form>

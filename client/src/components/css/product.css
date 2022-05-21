@@ -1,0 +1,37 @@
+h4{
+    font-size: 3.5em;
+}
+
+img{
+    max-width: 100%;
+}
+
+p{
+    font-size: 1.4em;
+}
+
+h5{
+    font-size: 2.4em;
+    text-align: center;
+}
+
+h6{
+    font-size: 1.5em;
+    text-align: center;
+}
+
+.form-styles{
+    display: block;
+    background-color: #d1d1d1;
+    padding: 5%;  
+    border-radius: 20px;
+    margin-top: 5px; 
+}
+
+.form-font-size{
+    font-size: 1.2em;
+}
+
+input{
+    font-size: 2.2em;
+}
