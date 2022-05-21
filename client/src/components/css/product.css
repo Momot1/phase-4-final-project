@@ -1,21 +1,21 @@
-h4{
+.product-h4{
     font-size: 3.5em;
 }
 
-img{
+.product-img{
     max-width: 100%;
 }
 
-p{
+.product-p{
     font-size: 1.4em;
 }
 
-h5{
+.product-h5{
     font-size: 2.4em;
     text-align: center;
 }
 
-h6{
+.product-h6{
     font-size: 1.5em;
     text-align: center;
 }
@@ -32,6 +32,11 @@ h6{
     font-size: 1.2em;
 }
 
-input{
-    font-size: 2.2em;
+#image-div {
+    width: 20%;
+    padding-right: 10px;
+}
+
+.div-text-center{
+    text-align: center;
 }

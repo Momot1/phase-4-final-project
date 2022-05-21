@@ -1,4 +1,4 @@
-
+import "./css/reviews.css"
 
 function Review({review, user, onDeleteReview}){
     function testUser(){
@@ -12,8 +12,8 @@ function Review({review, user, onDeleteReview}){
     }
 
     return (
-        <div style={{textAlign: "center"}}>
-            <p>{review.rating}/5 stars - {review.description}{testUser() ? <button onClick={() =>  onDeleteReview(review.id)}>Delete review</button> : null}</p>
+        <div id="review-div">
+            <p className="review-p">{review.rating}/5 stars - {review.description}{testUser() ? <button className="btn btn-light btn-lg" onClick={() =>  onDeleteReview(review.id)}>Delete review</button> : null}</p>
             
         </div>
     )

@@ -4,14 +4,9 @@ import { addZeros } from "./functions"
 
 function Cart({user, setUser}){
 
-    // console.log(user.cart.products)
 
 
     function removeFromCart(id){
-        // const product = user.cart.products.filter(product => product.id === id)
-
-        console.log(id)
-
 
         fetch(`/removefromcart/${id}`, {
             method: "DELETE", 
