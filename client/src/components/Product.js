@@ -104,11 +104,11 @@ function Product({user, setUser}){
             </div>
             
 
-            <div className="div-text-center">
+            <div className="text-center">
                 <button onClick={addToCart} className="btn btn-light btn-lg">Add to cart <i className="bi bi-cart-plus"></i></button><br/>
             </div>
 
-            {addedToCart ? <div className="alert alert-success mx-auto btn-lg div-text-center" role="alert" style={{width: "max-content"}}>
+            {addedToCart ? <div className="alert alert-success mx-auto btn-lg text-center" role="alert" style={{width: "max-content"}}>
                     Item added to cart <button onClick={() => setAddedToCart(false)} className="btn btn-light">X</button>
                 </div> : null}
 
@@ -116,9 +116,9 @@ function Product({user, setUser}){
             <h5 className="product-h5">Reviews</h5>
             {reviewElements.length > 0 ? reviewElements : <h6 className="product-h6">No reviews for this product yet</h6>}
             
-            {user ? <div className="div-text-center"><button onClick={() => setIsClicked(!isClicked)} className="btn btn-light btn-lg">New Review</button></div> : null}
+            {user ? <div className="text-center"><button onClick={() => setIsClicked(!isClicked)} className="btn btn-light btn-lg">New Review</button></div> : null}
             {isClicked  ? 
-                <div className="mx-auto w-50 div-text-center">
+                <div className="mx-auto w-50 text-center">
                     <form onSubmit={onReviewSubmit} className="form-styles">
                         <div className="input-group mb-3">
                             <span className="input-group-text form-font-size" aria-label="Rating">Rating:</span>

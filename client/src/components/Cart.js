@@ -1,10 +1,9 @@
 import { Link } from "react-router-dom"
 import { addZeros } from "./functions"
+import "./css/cart.css"
 
 
 function Cart({user, setUser}){
-
-
 
     function removeFromCart(id){
 
@@ -20,27 +19,27 @@ function Cart({user, setUser}){
     }
 
     if(user.cart.cart.length === 0){
-        return <h3 className="text-capitalize" style={{textAlign: "center", padding: "10px"}}>Hi {user.name}, You're cart is empty.</h3>
+        return <div><h3 className="text-capitalize text-center" id="cart-h3">Hi {user.name}, You're cart is empty.</h3></div>
     }
 
 
     const productElements = user.cart.cart.map(product => 
         <div key={product.id} className="border d-flex flex-row mb-3">
-            <div style={{width: "max-content"}} className="p-2 border">
-                <img src={product.product.image_url} style={{maxWidth: "200px"}} alt={product.product.name}/>
+            <div className="p-2 border width-max-content">
+                <img src={product.product.image_url} className="cart-img" alt={product.product.name}/>
             </div>
             <div className="p-2">
-                <Link style={{color: "#3a4187", padding: "5px", fontSize: "1.3em"}} className="text-uppercase" to={`/products/${product.product.id}`}>{product.product.name} - ${addZeros(product.product.price)}</Link> 
-                <p style={{padding: "5px", fontSize: "1.1em"}}>{product.product.description}<button className="btn btn-light btn-lg" onClick={() => removeFromCart(product.id)}>Remove From Cart</button></p>
+                <Link className="text-uppercase cart-link" to={`/products/${product.product.id}`}>{product.product.name} - ${addZeros(product.product.price)}</Link> 
+                <p className="cart-p">{product.product.description}<button className="btn btn-light btn-lg" onClick={() => removeFromCart(product.id)}>Remove From Cart</button></p>
             </div>
                                                                 
         </div>
     )
 
     return (
-        <div className="mx-auto w-75" style={{ margin: "0.2%"}}>
+        <div className="mx-auto w-75" id="cart-div">
             {productElements}
-            <h4 style={{textAlign: "center"}}>Cart total: ${addZeros(user.cart.total)}</h4>
+            <h4 className="text-center cart-h4">Cart total: ${parseFloat(addZeros(user.cart.total)).toFixed(2)}</h4>
         </div>
     )
 }

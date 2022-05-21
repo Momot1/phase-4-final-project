@@ -49,8 +49,8 @@ function ChangePassword({user, setUser}){
     const errorElements = errors.errors.map(error => <div key={error} className="alert alert-danger form-font-size">- {error}</div>)
 
     return (
-        <div className="mx-auto" style={{width: "30%", textAlign: "center"}}>
-            <form onSubmit={handleUserUpdateChange} className="align-items-center" style={{padding: "5%", backgroundColor:"#d1d1d1", borderRadius: "20px", marginBottom: "5px"}}>
+        <div className="mx-auto text-center w-25">
+            <form onSubmit={handleUserUpdateChange} className="align-items-center form-styles">
                 <div className="input-group mb-3">
                     <span className="input-group-text form-font-size" aria-label="Old Password">Old Password:</span>
                     <input type="password" className="form-control form-font-size" aria-label="Old Password" aria-describedby="inputGroup-sizing-default" value={formData.old_password} onChange={e => updateForm(e, "old_password")} required/>

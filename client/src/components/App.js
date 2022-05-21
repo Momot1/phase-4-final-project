@@ -9,6 +9,7 @@ import Product from "./Product";
 import UserProfile from "./UserProfile";
 import Logout from "./Logout";
 import ChangePassword from "./ChangePassword";
+import "./css/app.css"
 
 function App() {
 

@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom"
 import { addZeros } from "./functions.js"
+import "./css/home.css"
 
 function Home({ products }){
     const productElements = products.map(product => 
         <div key={product.id} className="border d-flex flex-row mb-3" style={{backgroundColor: "#f2f2f2"}}>
-            <div style={{width: "max-content"}} className="p-2 border">
+            <div className="p-2 border max-content-width">
                 <img src={product.image_url} style={{maxWidth: "200px"}} alt={product.name}/>
             </div>
             <div className="p-2">
@@ -17,8 +18,8 @@ function Home({ products }){
 
 
     return (
-        <div style={{backgroundColor: "white", height: "100%", borderStyle: "solid", borderColor: "white"}}>
-            <div className="mx-auto w-75" style={{ margin: "0.2%"}}>
+        <div id="home-container">
+            <div className="mx-auto w-75" id="home-products-container">
                 {productElements}
             </div>    
         </div>

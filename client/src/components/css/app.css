@@ -1,0 +1,15 @@
+.text-center{
+    text-align: center;
+}
+
+.max-content-width{
+    width: max-content;
+}
+
+.form-styles{
+    display: block;
+    background-color: #d1d1d1;
+    padding: 5%;  
+    border-radius: 20px;
+    margin-top: 5px; 
+}

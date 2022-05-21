@@ -1,0 +1,10 @@
+#home-container{
+    background-color: white;
+    height: 100%;
+    border-style: solid;
+    border-color: white;
+}
+
+#home-products-container{
+    margin: 0.2%;
+}

@@ -1,0 +1,27 @@
+.cart-link{
+    color: #3a4187;
+    padding: 5px;
+    font-size: 1.3em;
+}
+
+.cart-img{
+    max-width: 200px;
+}
+
+.cart-p{
+    padding: 5px;
+    font-size: 1.1em;
+}
+
+#cart-h3{
+    padding: 10px;
+    font-size: 3em;
+}
+
+#cart-div{
+    margin: 0.2%;
+}
+
+.cart-h4{
+    font-size: 2em;
+}
