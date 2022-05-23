@@ -9,6 +9,7 @@ import Product from "./Product";
 import UserProfile from "./UserProfile";
 import Logout from "./Logout";
 import ChangePassword from "./ChangePassword";
+import NewProduct from "./NewProduct"
 import "./css/app.css"
 
 function App() {
@@ -48,10 +49,12 @@ function App() {
         <Route path="/login"><Login setUser={setUser} user={user}/></Route>
         <Route path="/signup"><Signup setUser={setUser} user={user}/></Route>
         <Route path="/cart"><Cart user={user} setUser={setUser}/></Route>
+        <Route exact path="/products/new"><NewProduct user={user}/></Route>
         <Route path="/products/:id"><Product user={user} setUser={setUser}/></Route>
         <Route exact path="/:username/about"><UserProfile user={user} setUser={setUser}/></Route>
         <Route path="/logout"><Logout setUser={setUser}/></Route>
         <Route path="/:username/about/password/change"><ChangePassword user={user} setUser={setUser}/></Route>
+        
         <Route path="/">404 NOT FOUND</Route>
       </Switch>
     </BrowserRouter>

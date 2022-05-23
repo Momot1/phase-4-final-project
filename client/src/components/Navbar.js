@@ -30,6 +30,7 @@ function Navbar({onSearchSubmit, user}){
                     <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <Link to={`/${user.username}/about`} className="btn-lg">Profile</Link><br/>
                         <Link to="/cart" className="btn-lg">My Cart {user.cart.cart.length > 0 ? `(${user.cart.cart.length})`: null}</Link><br/>
+                        {user.is_admin ? <><Link to="/products/new" className="btn-lg">New Product</Link><br/></> : null}
                         <Link to="/logout" className="btn-lg">Logout</Link>
                         
                     </div>

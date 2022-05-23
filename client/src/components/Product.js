@@ -101,12 +101,19 @@ function Product({user, setUser}){
                     <h4 className="product-h4">{product.name} - ${addZeros(product.price)}</h4>
                     <p className="product-p">{product.description}</p>
                 </div>
+                {user.is_admin ? 
+                    <div className="w-25">
+                        <button className="btn btn-lg btn-light">Update Product</button>
+                        <button className="btn btn-lg btn-light">Delete Product</button>
+                    </div> 
+                : null}
             </div>
             
 
             <div className="text-center">
                 <button onClick={addToCart} className="btn btn-light btn-lg">Add to cart <i className="bi bi-cart-plus"></i></button><br/>
             </div>
+
 
             {addedToCart ? <div className="alert alert-success mx-auto btn-lg text-center max-content-width" role="alert">
                     Item added to cart <button onClick={() => setAddedToCart(false)} className="btn btn-light">X</button>
