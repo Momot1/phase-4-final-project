@@ -19,7 +19,7 @@ class ProductsController < ApplicationController
     def destroy
         product = Product.find(params[:id])
         product.destroy
-        render json: {}, status: :no_content
+        render json: {}
     end
 
     def update

@@ -5,7 +5,7 @@ import { useState, useEffect } from "react"
 import "./css/product.css"
 
 
-function Product({user, setUser}){
+function Product({user, setUser, products, setProducts}){
     const [isClicked, setIsClicked] = useState(false)
     const [product, setProduct] = useState(null)
     const [formData, setFormData] = useState({
@@ -91,6 +91,24 @@ function Product({user, setUser}){
 
     const reviewElements = product.reviews.map(review => <Review key={review.id} review={review} user={user} onDeleteReview={onDeleteReview}/>)
 
+    function onDeleteProductButtonClick(){
+        if(window.confirm("Are you sure you want to delete this product? Cannot be undone.")){
+            fetch(`/products/${id}`, {
+                method: "DELETE"
+            }) 
+            .then(resp => resp.json())
+            .then(() => {
+                const updatedProducts = products.filter(product => product.id !== parseInt(id))
+                setProducts(updatedProducts)
+                history.push("/")
+            })
+        }
+    }
+
+    function onUpdateButtonClick(e){
+
+    }
+
     return (
         <div>
             <div className="d-flex flex-row mb-3">
@@ -103,8 +121,8 @@ function Product({user, setUser}){
                 </div>
                 {user.is_admin ? 
                     <div className="w-25">
-                        <button className="btn btn-lg btn-light">Update Product</button>
-                        <button className="btn btn-lg btn-light">Delete Product</button>
+                        <button className="btn btn-lg btn-light" onClick={onUpdateButtonClick}>Update Product</button>
+                        <button className="btn btn-lg btn-light" onClick={onDeleteProductButtonClick}>Delete Product</button>
                     </div> 
                 : null}
             </div>
