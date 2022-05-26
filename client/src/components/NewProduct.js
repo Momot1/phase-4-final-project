@@ -1,7 +1,7 @@
 import { useHistory } from "react-router-dom"
 import { useState } from "react"
 
-function NewProduct({user}){
+function NewProduct({user, products, setProducts}){
     const [formData, setFormData] = useState({
         name: "",
         price: "",
@@ -18,6 +18,19 @@ function NewProduct({user}){
 
     function onSubmitItem(e){
         e.preventDefault()
+
+        fetch("/products", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(formData)
+        })
+        .then(resp => resp.json())
+        .then(product => {
+            setProducts([...products, product])
+            history.push("/")
+        })
     }
 
     function updateForm(e, input){

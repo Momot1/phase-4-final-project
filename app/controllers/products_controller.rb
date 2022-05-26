@@ -31,7 +31,7 @@ class ProductsController < ApplicationController
     private
 
     def product_params
-        params.permit(:name, :price, :purchase_link, :image_url)
+        params.permit(:name, :price, :image_url, :description, :stock_amount)
     end
 
     def rescue_not_found
