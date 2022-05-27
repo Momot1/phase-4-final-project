@@ -3,16 +3,18 @@ import { addZeros } from "./functions.js"
 import Review from "./Review.js"
 import { useState, useEffect } from "react"
 import "./css/product.css"
+import UpdateProduct from "./UpdateProduct.js"
 
 
 function Product({user, setUser, products, setProducts}){
-    const [isClicked, setIsClicked] = useState(false)
+    const [isReviewClicked, setIsClicked] = useState(false)
     const [product, setProduct] = useState(null)
     const [formData, setFormData] = useState({
         rating: "",
         description: ""
     })
     const [addedToCart, setAddedToCart] = useState(false)
+    const [isUpdateButtonClicked, setIsUpdateButtonClicked] = useState(false)
 
     const history = useHistory()
 
@@ -48,13 +50,13 @@ function Product({user, setUser, products, setProducts}){
         } else{
             setAddedToCart(true)
             fetch("/addtocart", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                product_id: id
-            })
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    product_id: id
+                })
             })
             .then(resp => resp.json())
             .then(user => {
@@ -106,7 +108,22 @@ function Product({user, setUser, products, setProducts}){
     }
 
     function onUpdateButtonClick(e){
+        setIsUpdateButtonClicked(!isUpdateButtonClicked)
+    }
 
+    function onUpdateItem(e, formData){
+        e.preventDefault()
+        
+        fetch(`/products/${id}`, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(formData)
+        })
+        .then(resp => resp.json())
+        .then(setProduct)
+        
     }
 
     return (
@@ -119,10 +136,11 @@ function Product({user, setUser, products, setProducts}){
                     <h4 className="product-h4">{product.name} - ${addZeros(product.price)}</h4>
                     <p className="product-p">{product.description}</p>
                 </div>
-                {user.is_admin ? 
+                {user && user.is_admin ? 
                     <div className="w-25">
                         <button className="btn btn-lg btn-light" onClick={onUpdateButtonClick}>Update Product</button>
                         <button className="btn btn-lg btn-light" onClick={onDeleteProductButtonClick}>Delete Product</button>
+                        {isUpdateButtonClicked ? <UpdateProduct product={product} onUpdateItem={onUpdateItem}/> : null}
                     </div> 
                 : null}
             </div>
@@ -141,8 +159,8 @@ function Product({user, setUser, products, setProducts}){
             <h5 className="product-h5">Reviews</h5>
             {reviewElements.length > 0 ? reviewElements : <h6 className="product-h6">No reviews for this product yet</h6>}
             
-            {user ? <div className="text-center"><button onClick={() => setIsClicked(!isClicked)} className="btn btn-light btn-lg">New Review</button></div> : null}
-            {isClicked  ? 
+            {user ? <div className="text-center"><button onClick={() => setIsClicked(!isReviewClicked)} className="btn btn-light btn-lg">New Review</button></div> : null}
+            {isReviewClicked  ? 
                 <div className="mx-auto w-50 text-center">
                     <form onSubmit={onReviewSubmit} className="form-styles">
                         <div className="input-group mb-3">

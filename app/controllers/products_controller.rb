@@ -25,7 +25,7 @@ class ProductsController < ApplicationController
     def update
         product = Product.find(params[:id])
         product.update(product_params)
-        render json: product, status: :accepted
+        render json: product, status: :accepted, serializer: ProductShowSerializer
     end
 
     private
