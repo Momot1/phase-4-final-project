@@ -122,7 +122,10 @@ function Product({user, setUser, products, setProducts}){
             body: JSON.stringify(formData)
         })
         .then(resp => resp.json())
-        .then(setProduct)
+        .then(product => {
+            setProduct(product)
+            setIsUpdateButtonClicked(false)
+        })
         
     }
 
