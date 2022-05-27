@@ -122,9 +122,17 @@ function Product({user, setUser, products, setProducts}){
             body: JSON.stringify(formData)
         })
         .then(resp => resp.json())
-        .then(product => {
-            setProduct(product)
+        .then(updatedProduct => {
+            setProduct(updatedProduct)
             setIsUpdateButtonClicked(false)
+            const updatedProducts = products.map(product => {
+                if(product.id === updatedProduct.id){
+                    return updatedProduct
+                } else{
+                    return product
+                }
+            })
+            setProducts(updatedProducts)
         })
         
     }
