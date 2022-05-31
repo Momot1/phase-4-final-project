@@ -49,3 +49,5 @@ These are the things that I want to do in the future.
 -Add a checkout page
 
 -Update cart to be able to set quantity of items instead of displaying multiple of each item
+
+-Update the search to be sent to a different page, and display those searches in the same way the home page is displayed. So when a user clicks the home page, the original products get displayed instead of having to search an empty string to get the original products.
