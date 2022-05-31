@@ -11,6 +11,7 @@ function ChangePassword({user, setUser}){
 
     const [errors, setErros] = useState({errors: []})
 
+    // If there is no user, returns an empty page
     if(!user){
             return <></>
     }
@@ -19,6 +20,7 @@ function ChangePassword({user, setUser}){
         setFormData({...formData, [input]: e.target.value})
     }
 
+    // Once the user submits the form, it goes to the backend. If all information is correct, it changes the password and sends the user back to their about page. If not, it displayes the errors
     function handleUserUpdateChange(e){
         e.preventDefault()
 
@@ -46,6 +48,7 @@ function ChangePassword({user, setUser}){
         })
     }
 
+    // Creates elements for each error
     const errorElements = errors.errors.map(error => <div key={error} className="alert alert-danger form-font-size">- {error}</div>)
 
     return (

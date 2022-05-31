@@ -5,8 +5,8 @@ import "./css/cart.css"
 
 function Cart({user, setUser}){
 
+    // Removes an item from the cart
     function removeFromCart(id){
-
         fetch(`/removefromcart/${id}`, {
             method: "DELETE", 
         })
@@ -14,15 +14,17 @@ function Cart({user, setUser}){
         .then(setUser)
     }
 
+    // If there is no user logged in, returns an empty page. This is for error handling
     if(!user){
         return <></>
     }
 
+    // If the user's cart is empty, it tells them their cart is empty
     if(user.cart.cart.length === 0){
         return <div><h3 className="text-capitalize text-center" id="cart-h3">Hi {user.name}, You're cart is empty.</h3></div>
     }
 
-
+    // Creates elements for each cart item
     const productElements = user.cart.cart.map(product => 
         <div key={product.id} className="border d-flex flex-row mb-3">
             <div className="p-2 border width-max-content">

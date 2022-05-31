@@ -3,6 +3,7 @@ import { addZeros } from "./functions.js"
 import "./css/home.css"
 
 function Home({ products }){
+    // Creates elements for each product from the database
     const productElements = products.map(product => 
         <div key={product.id} className="border d-flex flex-row mb-3 div-product-background">
             <div className="p-2 border max-content-width">

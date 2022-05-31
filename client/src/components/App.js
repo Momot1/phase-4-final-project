@@ -18,7 +18,7 @@ function App() {
   const [products, setProducts] = useState([])
   const [search, setSearch] = useState("")
 
-
+  // Check if user is logged in
   useEffect(() => {
     fetch('/me')
     .then(resp => {
@@ -28,16 +28,19 @@ function App() {
     })
   }, [])
 
+  // Grab all the products in the DB
   useEffect(() => {
       fetch("/products")
       .then(resp => resp.json())
       .then(setProducts)
     }, [])
 
+  // Updates search value on search bar submitted
   function onSearch(search){
     setSearch(search)
   }
 
+  // Filters the products based on the search
   const filteredProducts = products.filter(product => product.name.toLowerCase().includes(search.toLowerCase()))
 
   return (

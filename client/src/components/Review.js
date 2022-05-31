@@ -1,6 +1,7 @@
 import "./css/reviews.css"
 
 function Review({review, user, onDeleteReview}){
+    // Checks to see if the user is either the owner of a review, or an administrator. If they are, then a delete button will be present
     function testUser(){
         if(!user){
             return false

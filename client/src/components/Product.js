@@ -21,6 +21,7 @@ function Product({user, setUser, products, setProducts}){
 
     const { id } = useParams()
 
+    // When the user submits a review, it adds it to the database and displays the review on the page
     function onReviewSubmit(e){
         e.preventDefault()
 
@@ -41,6 +42,7 @@ function Product({user, setUser, products, setProducts}){
         })
     }
 
+    // When the user adds an item to their cart, it adds that item to the user's cart in the database and displays a message saying it was added to their cart. They can then go view their cart
     function addToCart(){
         if(!user){
             history.push("/login")
@@ -62,6 +64,7 @@ function Product({user, setUser, products, setProducts}){
         }
     }
 
+    // Deletes a review from the database and updates the page to no longer display the deleted review
     function onDeleteReview(id){
         fetch(`/reviews/${id}`, {
             method: "DELETE"
@@ -73,6 +76,7 @@ function Product({user, setUser, products, setProducts}){
         })
     }
 
+    // Grabs the product from the database based on the id in the url
     useEffect(() => {
         fetch(`/products/${id}`)
         .then(resp => resp.json())
@@ -82,14 +86,15 @@ function Product({user, setUser, products, setProducts}){
         })
     }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
+    // If there is no product, it displays an empty page
     if(!product){
         return <></>
     }
 
-    
-
+    // Creates elements for each review for the product
     const reviewElements = product.reviews.map(review => <Review key={review.id} review={review} user={user} onDeleteReview={onDeleteReview}/>)
 
+    // If the user is an admin, and they click the delete product button, it asks if you are sure. If you are, then it deletes the product from the database and sends the user to the homepage
     function onDeleteProductButtonClick(){
         if(window.confirm("Are you sure you want to delete this product? Cannot be undone.")){
             fetch(`/products/${id}`, {
@@ -108,6 +113,7 @@ function Product({user, setUser, products, setProducts}){
         setIsUpdateButtonClicked(!isUpdateButtonClicked)
     }
 
+    // Updates the product in the database. Displays the updated item on the screen
     function onUpdateItem(e, formData){
         e.preventDefault()
         

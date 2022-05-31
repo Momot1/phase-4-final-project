@@ -19,6 +19,7 @@ function Signup({setUser, user}){
 
     const [errors, setErrors] = useState({errors: []})
 
+    // Once the user submits the form, the data is sent to the backend. If everything looks good, the user is logged in and their account is created. If there are errors, the errors will be displayed on the page
     function onSignup(e){
         e.preventDefault()
 
@@ -42,11 +43,8 @@ function Signup({setUser, user}){
         })
     }
 
-
+    // Creates elements for each error to be displayed on the page
     const errorElements = errors.errors.map(error => <div key={error} className="alert alert-danger form-font-size mx-auto w-50">- {error}</div>)
-    
-
-    
 
     function updateForm(e, input){
         setFormData({...formData, [input]: e.target.value})

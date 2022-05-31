@@ -12,10 +12,12 @@ function NewProduct({user, products, setProducts}){
 
     const history = useHistory()
 
+    // If there is no user, or the user is not an admin, it sends the user to the homepage
     if(!user || !user.is_admin){
         history.push("/")
     }
 
+    // When the form is submitted, it adds the product to the database, and sends the user to the home page with the updated product displayed at the bottom
     function onSubmitItem(e){
         e.preventDefault()
 

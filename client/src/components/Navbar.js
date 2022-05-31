@@ -7,6 +7,7 @@ function Navbar({onSearchSubmit, user}){
 
     const history = useHistory()
 
+    // When a user searches for an item, it sets the search value and sends them to the homepage with the searched items displayed.
     function onSearch(e){
         e.preventDefault()
         onSearchSubmit(search)
@@ -24,6 +25,7 @@ function Navbar({onSearchSubmit, user}){
                 <button type="submit" className="btn btn-light btn-lg margin-small">Search</button>
             </form>
 
+            {/* If there is a user, it displays a dropdown with some more links they can click. If there is no logged in user, it displays a link to where the user can log in */}
             {user ? 
                 <>
                     <button className="nav-link dropdown-toggle btn-light px-1  text-capitalize btn-lg margin-small" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{user.name}</button>

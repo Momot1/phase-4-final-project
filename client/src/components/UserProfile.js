@@ -1,18 +1,25 @@
-import { Link } from "react-router-dom"
+import { Link, useHistory } from "react-router-dom"
 import "./css/userprofile.css"
 
 function UserProfile({user, setUser}){
+    const history = useHistory()
+
+    // If there is no user, it displays an empty page
     if(!user){
         return <></>
     }
 
+    // If the user clicks the delete account, it makes them confirm. If they confirm, their account will be deleted from the database and they will be sent to the homepage.
     function handleDeleteAccount(){
         if(window.confirm("Are you sure you want to delete your account?")){
             fetch(`/users/${user.id}`, {
                 method: "DELETE"
             })
             .then(resp => resp.json())
-            .then(() => setUser(null))
+            .then(() => {
+                setUser(null)
+                history.push("/")
+            })
         }
     }
 

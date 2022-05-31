@@ -4,6 +4,7 @@ import { Link, useHistory } from "react-router-dom"
 function Login({setUser, user}){
     const history = useHistory()
  
+    // If a user is logged in, it sends them to the home page.
     if(user){
         history.push("/")
     }
@@ -15,6 +16,7 @@ function Login({setUser, user}){
 
     const [errors, setErrors] = useState(null)
 
+    // Once the user submites the form, data gets sent to backend. If authenticated, they will be logged in and sent to their previous page. If there are errors, it displays an error message
     function onLogin(e){
         e.preventDefault()
 
