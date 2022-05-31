@@ -38,8 +38,6 @@ Once you are logged in, the login button will change to your name. You can click
 ## Roadmap
 These are the things that I want to do in the future.
 
--Have administator accounts be able to update products, delete products, and add products directly from the webpage. 
-
 -Update styling for products page
 
 -Add styling for mobile devices to have information shown properly
