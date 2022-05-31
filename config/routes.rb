@@ -5,7 +5,6 @@ Rails.application.routes.draw do
 
       resources :reviews, only: [:create, :update, :destroy]
       resources :products
-      resources :cartproducts, only: [:create, :destroy]
       resources :users, only: [:destroy]
 
       # Login/logout routes
@@ -20,8 +19,4 @@ Rails.application.routes.draw do
 
       post "/addtocart", to: "users#add_to_cart"
       delete "/removefromcart/:id", to: "users#remove_from_cart"
-
-
-   
-
 end
