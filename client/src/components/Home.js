@@ -12,10 +12,8 @@ function Home({ products }){
                 <Link className="text-uppercase home-product-link" to={`/products/${product.id}`}>{product.name} - ${addZeros(product.price)}</Link> 
                 <p className="home-p">{product.description}</p>
             </div>
-            
         </div>
     )
-
 
     return (
         <div id="home-container">

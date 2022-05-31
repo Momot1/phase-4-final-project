@@ -9,9 +9,9 @@ function Cart({user, setUser}){
 
         fetch(`/removefromcart/${id}`, {
             method: "DELETE", 
-        }) //remove correct item from cart
+        })
         .then(resp => resp.json())
-        .then(setUser)//filter user
+        .then(setUser)
     }
 
     if(!user){

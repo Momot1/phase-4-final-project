@@ -4,25 +4,22 @@ import Review from "./Review.js"
 import { useState, useEffect } from "react"
 import "./css/product.css"
 import UpdateProduct from "./UpdateProduct.js"
+import ReviewForm from "./ReviewForm.js"
 
 
 function Product({user, setUser, products, setProducts}){
     const [isReviewClicked, setIsClicked] = useState(false)
     const [product, setProduct] = useState(null)
+    const [addedToCart, setAddedToCart] = useState(false)
+    const [isUpdateButtonClicked, setIsUpdateButtonClicked] = useState(false)
     const [formData, setFormData] = useState({
         rating: "",
         description: ""
     })
-    const [addedToCart, setAddedToCart] = useState(false)
-    const [isUpdateButtonClicked, setIsUpdateButtonClicked] = useState(false)
 
     const history = useHistory()
 
     const { id } = useParams()
-
-    function updateForm(e, input){
-        setFormData({...formData, [input]: e.target.value})
-    }
 
     function onReviewSubmit(e){
         e.preventDefault()
@@ -107,7 +104,7 @@ function Product({user, setUser, products, setProducts}){
         }
     }
 
-    function onUpdateButtonClick(e){
+    function onUpdateButtonClick(){
         setIsUpdateButtonClicked(!isUpdateButtonClicked)
     }
 
@@ -161,7 +158,6 @@ function Product({user, setUser, products, setProducts}){
                 <button onClick={addToCart} className="btn btn-light btn-lg">Add to cart <i className="bi bi-cart-plus"></i></button><br/>
             </div>
 
-
             {addedToCart ? <div className="alert alert-success mx-auto btn-lg text-center max-content-width" role="alert">
                     Item added to cart <button onClick={() => setAddedToCart(false)} className="btn btn-light">X</button>
                 </div> : null}
@@ -171,22 +167,7 @@ function Product({user, setUser, products, setProducts}){
             {reviewElements.length > 0 ? reviewElements : <h6 className="product-h6">No reviews for this product yet</h6>}
             
             {user ? <div className="text-center"><button onClick={() => setIsClicked(!isReviewClicked)} className="btn btn-light btn-lg">New Review</button></div> : null}
-            {isReviewClicked  ? 
-                <div className="mx-auto w-50 text-center">
-                    <form onSubmit={onReviewSubmit} className="form-styles">
-                        <div className="input-group mb-3">
-                            <span className="input-group-text form-font-size" aria-label="Rating">Rating:</span>
-                            <input type="number" max="5" min="1" value={formData.rating} onChange={e => updateForm(e, "rating")} className="form-font-size form-control" aria-label="Rating" aria-describedby="inputGroup-sizing-default" required></input><span className="form-font-size">/5 stars</span><br/>    
-                        </div>
-                        <div className="input-group mb-3">
-                            <span className="input-group-text form-font-size" aria-label="Review">Review:</span>
-                            <input type="text" value={formData.description} onChange={e => updateForm(e, "description")} className="form-control form-font-size" aria-label="Review" aria-describedby="inputGroup-sizing-default" required></input><br/>    
-                        </div>
-                        
-                        <button type="submit" className="btn btn-light btn-lg">Submit</button>
-                    </form>
-                </div>
-            :null}
+            {isReviewClicked  ? <ReviewForm formData={formData} setFormData={setFormData} onReviewSubmit={onReviewSubmit}/>:null}
         </div>
     )
 }
