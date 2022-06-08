@@ -28,6 +28,19 @@ class ProductsController < ApplicationController
         render json: product, status: :accepted, serializer: ProductShowSerializer
     end
 
+    def purchase
+        user = User.find(session[:user_id])
+        products = user.userproducts.where(is_in_cart: true)
+
+        products.each do |product|
+            product.is_in_cart = false
+            product.save
+        end
+
+        render json: user, serializer: UserSerializer
+        # render json: {message: "yo"}
+    end
+
     private
 
     def product_params

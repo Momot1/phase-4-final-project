@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
     rescue_from ActiveRecord::RecordNotFound, with: :rescue_not_found
-    skip_before_action :authorized, only: :create
+    skip_before_action :authorized, only: [:create, :get_most_products]
 
     def create
         user = User.create(username: params[:username].downcase.gsub(/\s+/, ""), email: params[:email].downcase.gsub(/\s+/, ""), birthdate: params[:birthdate], name: params[:name], password: params[:password], password_confirmation: params[:password_confirmation])
@@ -17,7 +17,7 @@ class UsersController < ApplicationController
 
         render json: user, status: :created
     end
-
+ 
     def update_password
         user = User.find(session[:user_id])
 
@@ -37,6 +37,11 @@ class UsersController < ApplicationController
 
     rescue ActiveRecord::RecordInvalid => invalid
         render json: {errors: user.errors.full_messages}, status: :unprocessable_entity
+    end
+
+    def get_most_products
+        user = User.most_products
+        render json: user
     end
 
     def destroy

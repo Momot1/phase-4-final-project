@@ -1,19 +1,7 @@
 class UserSerializer < ActiveModel::Serializer
-  attributes  :id, :username, :email, :birthdate, :name, :created_at, :cart, :is_admin
+  attributes  :id, :username, :email, :birthdate, :name, :created_at, :cart, :is_admin, :orders
 
-  has_many :products
+  # has_many :products, include: [:is_in_cart]
+  # has_many :userproducts, serializer: UserproductsSerializer
   has_many :reviews
-
-  def cart
-    cart = []
-    total = 0
-    user = User.find(self.object.id)
-    products = user.userproducts.where(is_in_cart: true)
-
-    products.each do |product|
-      cart.push(id: product.id, product: product.product)
-      total += product.product.price
-    end
-    {total: total, cart: cart}
-  end
 end

@@ -147,7 +147,7 @@ function Product({user, setUser, products, setProducts}){
                     <img src={product.image_url} alt={product.name} className="product-img"/>
                 </div>
                 <div className="w-50">
-                    <h4 className="product-h4">{product.name} - ${addZeros(product.price)}</h4>
+                    <h4 className="product-h4">{product.name} - ${addZeros(product.price)} - {product.sold} sold!</h4>
                     <p className="product-p">{product.description}</p>
                 </div>
                 {user && user.is_admin ? 

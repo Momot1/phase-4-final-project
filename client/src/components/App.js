@@ -11,6 +11,7 @@ import Logout from "./Logout";
 import ChangePassword from "./ChangePassword";
 import NewProduct from "./NewProduct"
 import "./css/app.css"
+import UserProducts from "./UserProducts";
 
 function App() {
 
@@ -55,6 +56,7 @@ function App() {
         <Route exact path="/products/new"><NewProduct user={user} products={products} setProducts={setProducts}/></Route>
         <Route path="/products/:id"><Product user={user} setUser={setUser} products={products} setProducts={setProducts}/></Route>
         <Route exact path="/:username/about"><UserProfile user={user} setUser={setUser}/></Route>
+        <Route exact path="/:username/products"><UserProducts user={user}/></Route>
         <Route path="/logout"><Logout setUser={setUser}/></Route>
         <Route path="/:username/about/password/change"><ChangePassword user={user} setUser={setUser}/></Route>
         

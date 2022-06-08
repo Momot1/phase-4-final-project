@@ -7,6 +7,8 @@ Rails.application.routes.draw do
       resources :products
       resources :users, only: [:destroy]
 
+      
+
       # Login/logout routes
       post "/login", to: "sessions#create"
       delete "/logout", to: "sessions#destroy"
@@ -19,4 +21,8 @@ Rails.application.routes.draw do
 
       post "/addtocart", to: "users#add_to_cart"
       delete "/removefromcart/:id", to: "users#remove_from_cart"
+
+      get "/mostproducts", to: "users#get_most_products"
+
+      get "/purchase", to: "products#purchase"
 end
