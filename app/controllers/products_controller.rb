@@ -38,7 +38,11 @@ class ProductsController < ApplicationController
         end
 
         render json: user, serializer: UserSerializer
-        # render json: {message: "yo"}
+    end
+
+    def orderd_products
+        products = Product.all.order(:name)
+        render json: products
     end
 
     private

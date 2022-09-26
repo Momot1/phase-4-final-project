@@ -25,4 +25,6 @@ Rails.application.routes.draw do
       get "/mostproducts", to: "users#get_most_products"
 
       get "/purchase", to: "products#purchase"
+
+      get "/orderdproducts", to: "products#orderd_products"
 end
